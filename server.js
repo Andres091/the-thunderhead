@@ -448,6 +448,7 @@ client.on("message", async message => {
             message.channel.send(WeatherEmbed);
         });
     }
+    if (command === "tpose") return message.channel.send(`${message.author.username} has asserted their dominance`)
     if (command === "time") {
         if (!args[0]) return message.channel.send(msg.weather_nolocation); // Its for time but it still works
         await weather.find({
