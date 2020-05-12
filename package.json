@@ -6,7 +6,7 @@
   "author": "Skrub#9999",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "alphavantage": "^2.0.1",
