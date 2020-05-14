@@ -4,7 +4,15 @@ var eco = require('discord-economy');
 const config = require("../static/config.json"); 
 
 module.exports.run = async (client, message, args) => {
-  
+  let requiredPermission = "USE_EXTERNAL_EMOJIS"; 
+  if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+  if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+
+  let requiredPermission = "EMBED_LINKS"; 
+  if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+  if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+
+
   var user = message.mentions.users.first();
   var amount = args[1];
   var side = args[2];

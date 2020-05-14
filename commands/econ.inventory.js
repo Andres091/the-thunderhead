@@ -7,6 +7,26 @@ const vault = require("../dynamic/vault.json");
 var eco = require('discord-economy');
 
 module.exports.run = async (client, message, args) => {
+  let requiredPermission = "USE_EXTERNAL_EMOJIS"; 
+  if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+  if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+
+  let requiredPermission = "EMBED_LINKS"; 
+  if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+  if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+  
+let requiredPermission = "USE_EXTERNAL_EMOJIS"; 
+  if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+  if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+
+  let requiredPermission = "MANAGE_MESSAGES"; 
+  if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+
+  let requiredPermission = "ADD_REACTIONS"; 
+  if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+  if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+
+  
   let user = args[0];
   let cost;  
   if (!user) user = message.author.id;

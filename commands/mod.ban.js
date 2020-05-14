@@ -3,7 +3,10 @@ const fs = require("graceful-fs");
 
 
 module.exports.run = async (client, message, args) => {
-    if (!message.member.hasPermission("BAN_MEMBERS")) return;
+    let requiredPermission = "BAN_MEMBERS"; 
+    if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+    if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+    
     let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
     if (!member) return message.reply(client.msg["ban_invalid"]);
     if (!member.bannable) return message.reply(client.msg["ban_rejected"]);
@@ -20,7 +23,7 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.config = {
   name: "ban",
-  aliases: [],
+  aliases: ["execute", "exile", "glean"],
   use: "ban [@User]",
   description: "Ban a user from the server",
   state : "gamma",

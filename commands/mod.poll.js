@@ -4,7 +4,12 @@ const fs = require("graceful-fs");
 // This is a command template. I hope its self documenting so you don't have to sift through my god-awful code! ^.^
 
 module.exports.run = async (client, message, args) => {
-  if (!message.member.hasPermission("MANAGE_MESSAGES")) return;
+  let requiredPermission = "MANAGE_MESSAGES"; 
+  if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+  if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+   
+
+
   if (!args[0])
     return message.channel
       .send(client.msg["poll_undefined"])

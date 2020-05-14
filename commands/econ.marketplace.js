@@ -7,7 +7,29 @@ const vault = require("../dynamic/vault.json");
 var eco = require('discord-economy');
 
 module.exports.run = async (client, message, args) => {
-  if (!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return; // todo add the uh perm ask system i think...??????? 
+ 
+    let requiredPermission = "USE_EXTERNAL_EMOJIS"; 
+    if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+    if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+  
+    let requiredPermission = "EMBED_LINKS"; 
+    if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+    if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+    
+  let requiredPermission = "USE_EXTERNAL_EMOJIS"; 
+    if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+    if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+  
+    let requiredPermission = "MANAGE_MESSAGES"; 
+    if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+  
+    let requiredPermission = "ADD_REACTIONS"; 
+    if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+    if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+  
+ 
+ 
+    if (!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return; // todo add the uh perm ask system i think...??????? 
     if (!message.guild.member(client.user).hasPermission("ADD_REACTIONS")) return;
    
   if (items["marketplace"][0]) {

@@ -1,8 +1,9 @@
 "use strict";
+// @ts-nocheck
 
 // Import AuthFile
 const authFile = require("./auth.json");
-const auth = authFile.stable;
+const auth = authFile.stable; 
 
 // Import ConfigFiles
 const config = require("./static/config.json"); // For RNG, stocks, and other config things
@@ -68,14 +69,14 @@ client.on("ready", () => {
 		});
    
     // Essentially writes from what we have stored in RAM to the file because json is super cool and awesome
-    fs.writeFile("./dynamic/reminds.json", JSON.stringify(reminds, null, 4), function (err) { if (err) console.log(err);});
     fs.writeFile("./dynamic/items.json", JSON.stringify(items, null, 4), function (err) {if (err) console.log(err);});
-    fs.writeFile("./dynamic/vault.json", JSON.stringify(vault, null, 4), function (err) {if (err) console.log(err);});
     fs.writeFile("./dynamic/shares.json", JSON.stringify(shares, null, 4), function (err) {if (err) console.log(err);});
     fs.writeFile("./dynamic/profiles.json", JSON.stringify(profile, null, 4), function (err) {if (err) console.log(err);});
+	fs.writeFile("./dynamic/reminds.json", JSON.stringify(reminds, null, 4), function (err) { if (err) console.log(err);});
+  	fs.writeFile("./dynamic/vault.json", JSON.stringify(vault, null, 4), function (err) {if (err) console.log(err);});
     fs.writeFile("./dynamic/prefs.json", JSON.stringify(prefs, null, 4), function (err) {if (err) console.log(err);});
     
-		//todo: switch to an ACTUAL DATABASE (i think)
+	//todo: switch to an ACTUAL DATABASE (i think)
     // note: if you can do that or are in possession of two or more brain cells, submit a pr or hmu
     // note: also we need to make a python script or some shit to conver json to said actual database
     
@@ -109,15 +110,15 @@ fs.readdir("./commands/", (err, files) => {
 	jsfile.forEach((f, i) => {
 		//it will log all the file names with extension .js
 		let pull = require(`./commands/${f}`);
-		console.log(`\x1b[36m [Pending] Loading ${f}`); // Should be in colour
+		console.log(`\x1b[37Loading ${f} \x1b[36m [Pending]\x1b[37`); // Should be in colour
 		if(pull.config) {
 			client.commands.set(pull.config.name, pull);
 			pull.config.aliases.forEach(alias => {
 				client.aliases.set(alias, pull.config.name);
 			});
-      console.log(`\x1b[36m [Resolved] Fetched command ${pull.config.name} from ${f}`);
+      console.log(`\x1b[37Fetched command ${pull.config.name} from ${f} \x1b[36m [Resolved]\x1b[37`);
 		} else {
-      console.log(`\x1b[31m [Unresolved] Does ${f} have no commands? [Rejected]`)
+      console.log(`\x1b[37Does ${f} have no commands? \x1b[31m[Unresolved] [Rejected]\x1b[37`)
     }
 	});
 });
@@ -127,11 +128,21 @@ client.on('message', async message => {
 	let messageArray = message.content.split(" ")
 	let cmd = messageArray[0].toLowerCase();
 	let args = messageArray.slice(1);
-	if(!message.content.startsWith(prefix)) return;
-	client.msg = alingualMsgs;
 	
-  if (client.suspend && (config.sudo.indexOf(message.author.id) < 0)) return message.channel.send(client.msg["rejected"])
-  //todo: build lang parser  
+	client.msg = alingualMsgs;
+
+	// Before Prefix Check
+	if (message.content.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").indexOf("scythe goddard")) message.channel.send(`Backbrain Log ${Math.floor(1e4 * Math.random() + 1)}: Scythe Goddard has been spotted ${Date.now().toString().slice(4, 8)} times ${msg.goddardMoments[Math.floor(Math.random() * msg.goddardMoments.length)]}.`);
+	if (message.content.toLowerCase().indexOf("1 sec"))  message.channel.send("It has been one second.");
+
+
+
+
+
+	if(!message.content.startsWith(prefix)) return;
+	
+  	if (client.suspend && (config.sudo.indexOf(message.author.id) < 0)) return message.channel.send(client.msg["rejected"])
+  	//todo: build lang parser  
 	let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)));
 	if(commandfile) commandfile.run(client, message, args);
 });

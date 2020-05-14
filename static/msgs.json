@@ -3,6 +3,42 @@
   
   "rejcted_dj": "You do not have the `[ROLE_DJ]` and thus cannot use this command.",
 
+  "rejected_user_permission_BAN_MEMBERS": "You do not have the `Ban Members` permission and thus cannot use this command.",
+  "rejected_client_permission_BAN_MEMBERS": "I cannot execute this command without the `Ban Members` permission.",
+
+  "rejected_user_permission_KICK_MEMBERS": "You do not have the `Kick Members` permission and thus cannot use this command.",
+  "rejected_client_permission_KICK_MEMBERS": "I cannot execute this command without the `Kick Members` permission.",
+
+  "rejected_user_permission_ADD_REACTIONS": "You do not have the `Add Reactions` permission and thus cannot use this command.",
+  "rejected_client_permission_ADD_REACTIONS": "I cannot execute this command without the `Add Reactions` permission.",
+
+  "rejected_user_permission_MANAGE_MESSAGES": "You do not have the `Manage Messages` permission and thus cannot use this command.",
+  "rejected_client_permission_MANAGE_MESSAGES ":"I cannot execute this command without the `Manage Messages` permission.",
+
+  "rejected_user_permission_MANAGE_CHANNELS": "You do not have the `Manage Channels` permission and thus cannot use this command.",
+  "rejected_client_permission_MANAGE_CHANNELS":"I cannot execute this command without the `Manage Channels` permission.",
+
+
+  "rejected_user_permission_MANAGE_ROLES": "You do not have the `Manage Roles` permission and thus cannot use this command.",
+  "rejected_client_permission_MANAGE_ROLES ":"I cannot execute this command without the `Manage Roles` permission.",
+
+  "rejected_user_permission_USE_EXTERNAL_EMOJIS": "You do not have the `Use External Emojis` permission and thus cannot use this command.",
+  "rejected_client_permission_USE_EXTERNAL_EMOJIS": "There are emojis that I need to be able to send for this command to work, I cannot send them due to not having the `Use External Emojis` permission and thusly this command cannot be run.",
+
+  "rejected_user_permission_CONNECT": "You do not have the 🎙️`Connect` permission and thus cannot use this command.",
+  "rejected_client_permission_CONNECT": "I cannot connect to voice chat as I do not have the 🎙️`Connect` permission.",
+
+  "rejected_user_permission_SPEAK": "You do not have the 🎙️`Speak` permission and thus cannot use this command.",
+  "rejected_client_permission_SPEAK": "You cannot run this command as I do not have the 🎙️`Speak` permission neccesary to play audio in voice chat.",
+
+  
+  "rejected_user_permission_EMBED_LINKS": "You do not have the `Embed Links` permission and thus cannot use this command.",
+  "rejected_client_permission_EMBED_LINKS": "I cannot execute this command without the `Embed Links` permission.",
+  
+  "rejected_user_permission_ATTACH_FILES": "You do not have the `Attach Files` permission and thus cannot use this command.",
+  "rejected_client_permission_ATTACH_FILES": "I cannot execute this command without the `Attach Files` permission.",
+
+
   "help_command_invalid": "Unfortunately, that is not a valid command.",
   "help_page_invalid": "I could not find any help page at that number.",
   
@@ -141,5 +177,23 @@
   "music_skip_success": "⏩Song skipped.",
   "music_stop_success": "⏹ Song stopped.",
   "music_pause_success": "`⏸`Music Paused!",
-  "music_resume_success": "`▶` Music Resumed!"
+  "music_resume_success": "`▶` Music Resumed!",
+
+  "goddardMoments": [
+    "taking pennies from the donation box",
+    "not coughing into his elbow",
+    "being an asshat",
+    "not saying his 'please' and 'thank you's",
+    "cyberbullying young, impressionable children",
+    "uttering the phrase \"Well yeah! But they can't un-arson your property!\"",
+    "saying that big chungus is only wholsome 99",
+    "not tipping the pizza delivery boy",
+    "asking people to donate to the \"Goddard Birthday Party Charity\"",
+    "commiting arson",
+    "being absolutely tubular",
+    "unfolding clothes at the store then going to the employees demanding that they fold it; only to then, a minute later, unfold more clothes and swap them with the the food and produce, *then* throwing a fit when he gets kicked out",
+    "taking the last garlic bread",
+    "floating ~~completely false~~ `[Thunderhead has noted this to be an unauthorized edit from an anonymous Scythe]` `[Edit Reverted]` conspiracy theories about High Blade Xenocrates having an illegitimate daughter",
+    "double-dipping"
+]
 }

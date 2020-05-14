@@ -3,8 +3,14 @@ const fs = require("graceful-fs");
 const ms = require('ms');
 
 module.exports.run = async (client, message, args) => {
-  if (!message.guild.member(message.author).hasPermission("MUTE_MEMBERS")) return;
-  if (!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return;
+  let requiredPermission = "MANAGE_ROLES"; 
+  if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+  if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+  let requiredPermission = "EMBED_LINKS"; 
+  if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+  if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+   
+
   let reasonMute = message.content.split(" ").slice(3).join(" ");
   let timeMute = message.content.split(" ")[2];
   let guildMute = message.guild;

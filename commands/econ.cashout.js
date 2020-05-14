@@ -5,7 +5,12 @@ const alpha = require('alphavantage')({ key: `cirrus-${Math.random().toString(36
 const config = require("../static/config.json"); 
 const shares = require("../dynamic/shares.json");
 module.exports.run = async (client, message, args) => {
- if (!args[0]) return message.channel.send(client.msg["cashout_stock_invalid"]);
+  let requiredPermission = "USE_EXTERNAL_EMOJIS"; 
+  if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
+  if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
+
+ 
+  if (!args[0]) return message.channel.send(client.msg["cashout_stock_invalid"]);
     if (args[1] < 1 || Math.floor(args[1] != args[1])) return message.channel.send(client.msg["cashout_invalid"]);
     if (!shares[message.author.id][args[0].toUpperCase()]) return message.channel.send(client.msg["cashout_invalid"]); // If no shares then just end the check o_0
     if (!args[1]) return message.channel.send(client.msg["cashout_invalid"]);
