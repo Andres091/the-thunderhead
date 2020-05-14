@@ -22,8 +22,8 @@ module.exports.run = async (client, message, args  ) => {
               .addField("Day", days[date.getDay()], true)
               .addField("Time", `${date.getHours()}:${date.getMinutes()}`, true)
               .addField("Year", `Year of the: ${years[date.getFullYear() - 2020]} || ${date.getFullYear()}`)
-              .setColor(client.colors["discord"])
-            message.channel.send(timeEmbed)
+              .setColor(client.colors["discord"]);
+            message.channel.send(timeEmbed);
         });
   
 } 

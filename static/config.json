@@ -1,3 +1,22 @@
 {
-  "prefix":"."
+  "prefix": ".",
+  "developer_prepended_prefix": "/",
+  "sudo": ["297096161842429963"],
+  "econ_log_id": "699645327820456047",
+  "dj_role" : "Tonist",
+  "rob_win_chance": 60,
+  "rob_penalty": 20,
+  "daily_low": 10,
+  "daily_high": 22,
+  "repository":"https://github.com/humboldt123/the-thunderhead",
+  "stocks": {
+    "BSA": ["BigSky Airlines", "DAL"],
+    "ABC": ["Alphabet Backbrain Query", "GOOGL"],
+    "NHA": ["New Hope Aerospace Labs", "BA"],
+    "SFS": ["Sea Steak Food Synthesis", "WMT"],
+    "ELA": ["Misso Soup and Ramen", "QSR"],
+    "POO": ["Prager University", "FOX"],
+    "HAY": ["Hay Front Company", "FMNB"],
+    "IDN": ["Scythely Weaponry and Deathstuffs", "CLX"]
+  }
 }

@@ -10,6 +10,15 @@
     "utility_desktop":"<:desktop:709793886767284277>",
     "utility_web":"<:web:709793886918148116>",
     "utility_bot": "<:bot:703299323927986246>",
+    
+    "utility_firstplace":"🥇",
+    "utility_secondplace":"🥈",
+    "utility_thirdplace":"🥉",
+    "utility_fourthplace":"🎖️",
+    "utility_fifthplace":"🎖️",
+    "utility_sixthplace":"🎖️",
+    "utility_lowerplace":"🎖️",
+    
     "currency_vibes": "<:vibes:699395024886038628>",
     "character_thunderhead": "<:thunderhead:629835020332302346>",
     "character_curie": "<:curie:674363178838130688>",
@@ -70,5 +79,6 @@
       "https://askthethunderhead.com/sharing/non-belies.jpg"
     ],
   "ask_warn": "https://askthethunderhead.com/sharing/warning.jpg",
-  "website": "https://the-thunderhead.glitch.me"
+  "website": "https://the-thunderhead.glitch.me",
+  "volume_list": ["○────", "─○───", "──○──", "───○─", "────○"]
 }

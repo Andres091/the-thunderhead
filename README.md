@@ -8,8 +8,16 @@ The Thunderhead is a bot based on the popular book series Arc of a Scythe by Nea
 ## Current Ver. ☁️🐦 3.0.0 | Canary
 
 - Split code into multiple files 
-- Recoding Everything From The Ground Up [Pending]
+- Recoding Everything From The Ground Up 
 - Bug Fixes
+- Removed Language (will add later)
+- Major Code Cleanup
+
+### Todo:
+
+- Finish Code Cleanup
+- Readd Language
+- Readd Deleted Commands
 
   The thunderhead cannot intervene in affairs of the Scythedom. All it can do is watch; with an unblinking eye.
 

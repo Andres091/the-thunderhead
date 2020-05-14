@@ -27,14 +27,13 @@ module.exports.run = async (client, message, args) => {
   } else if (user.bot) devices = client.emotes["utility_bot"]; else devices = "Not Online";
   
 	let status;
-	if(user.presence.status === "online") status = (`Online ${client.emotes["utility_online"]}`);
-	if(user.presence.status === "idle") status = (`Idle ${client.emotes["utility_idle"]}`);
-	if(user.presence.status === "dnd") status = (`Do Not Disturb ${client.emotes["utility_dnd"]}`);
-	if(user.presence.status === "offline") status = (`Offline ${client.emotes["utility_offline"]}`);
-	if(user.presence.game) if(user.presence.game.streaming) {
-		status = `Streaming ${client.emotes["utility_live"]}`;
-	}
-	
+	if (user.presence.status === "online") status = (`Online ${client.emotes["utility_online"]}`);
+	else if(user.presence.status === "idle") status = (`Idle ${client.emotes["utility_idle"]}`);
+	else if (user.presence.status === "dnd") status = (`Do Not Disturb ${client.emotes["utility_dnd"]}`);
+	else if (user.presence.status === "offline") status = (`Offline ${client.emotes["utility_offline"]}`);
+	else status = (`Offline ${client.emotes["utility_offline"]}`);
+  if (user.presence.activities[0] && user.presence.activities[0].type === "STREAMING") status = `Streaming ${client.emotes["utility_live"]}`; 
+  
   let statusBlock = [{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true}];
   let thumbnail;
   if (user.presence.activities) { 
@@ -73,13 +72,14 @@ module.exports.run = async (client, message, args) => {
         { name: "Tag", value: user.discriminator, inline: true},
         { name: "Mention", value: `<@!${user.id}>`, inline: true},
         { name: "Discord Id", value: user.id, inline: true},
-        { name: "Status", value: status, inline: true},{ name: "Devices Online", value: devices, inline: true},
+        { name: "Status", value: status, inline: true},
+        { name: "Devices Online", value: devices, inline: true},
         { name: "Balance", value: userBalance + client.emotes["currency_vibes"], inline: true},
         
         statusBlock,
 	  )
     .setThumbnail(thumbnail)
-    .setFooter("Thunderhead Backbrain", client.user.avatarURL)
+    .setFooter("Thunderhead Backbrain", client.user.avatarURL())
     .setColor(client.colors["discord"]);
   
   message.channel.send(userinfoEmbed);

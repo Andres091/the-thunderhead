@@ -3,7 +3,7 @@ const fs = require("graceful-fs");
 const catFacts = require('cat-facts');
 var cats = require("cat-ascii-faces");
 
-module.exports.run = async (client, message, args  ) => {
+module.exports.run = async (client, message, args) => {
   
   message.channel.send(cats() + "\n" + catFacts.random());
   

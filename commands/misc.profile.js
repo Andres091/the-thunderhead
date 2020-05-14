@@ -3,15 +3,12 @@ const fs = require("graceful-fs");
 const Canvas = require('canvas');
 const profile = require("../dynamic/profiles.json");
 
-module.exports.run = async (client, message, args  ) => {
+module.exports.run = async (client, message, args) => {
   
     let target = message.author.id;
     if (args[0]) if (client.users.cache.get(args[0].replace(/[@!<>]/g, ""))) target = args[0].replace(/[@!<>]/g, "");
 
-    if (!profile[target]) {
-        profile[target] = {};
-        message.channel.send(client.msg["profile_setup"]);
-    }
+    if (!profile[target]) ((profile[target] = {}) && (message.channel.send(client.msg["profile_setup"]))); // && statements, snazzy.
 
     if (!profile[target]["skin"]) profile[target]["skin"] = "skin_olive";
     if (!profile[target]["face"]) profile[target]["face"] = "face_brown_default";
@@ -44,10 +41,9 @@ module.exports.run = async (client, message, args  ) => {
             ctx.drawImage(bot, 0, 0, canvas.width, canvas.height);
         }
 
-
         const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'scythe-avatar.png');
-
         message.channel.send(`Profile:`, attachment);
+      
     } else {
         let toEdit = args[0].toLowerCase();
         let typeOf = args[1];
@@ -103,8 +99,8 @@ module.exports.run = async (client, message, args  ) => {
             typeOf = typeOf.toLowerCase();
             if (typeOf == "red" || typeOf == "green" || typeOf == "turquoise" || typeOf == "dream" || typeOf == "incorrect" || typeOf == "correct") {
                 profile[target]["backdrop"] = `backdrop_${typeOf}`;
-            } else profile[target]["backdrop"] = `backdrop_none`;
-            message.channel.send(client.msg["profile_set_backdrop"]);
+            } else profile[target]["backdrop"] = `backdrop_none`; //  Can't tell if I made this a glitch or a feature. At this point, I'm too scared to ask...
+            message.channel.send(client.msg["profile_set_backdrop"]); 
 
         } else return message.channel.send(client.msg["profile_invalid"]);
 

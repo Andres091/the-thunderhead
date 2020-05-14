@@ -1,13 +1,13 @@
 {
   "name": "Cirrus",
-  "version": "0.0.1",
+  "version": "3.0.2",
   "description": "Canary for ScythePosts Thunderhead bot",
   "main": "index.js",
   "engines": {
     "node": "12.x"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "forever start server.js"
   },
   "dependencies": {
     "discord.js": "discordjs/discord.js",
@@ -21,7 +21,9 @@
     "cat-facts": "^1.0.2",
     "cat-ascii-faces": "^2.0.0",
     "canvas": "^2.6.1",
-    "math-expression-evaluator": "^1.2.22"
+    "math-expression-evaluator": "^1.2.22",
+    "alphavantage": "^2.0.1",
+    "ms": "^2.1.2"
   },
   "repository": {
     "url": "https://github.com/humboldt123/the-thunderhead"

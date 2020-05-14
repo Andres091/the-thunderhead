@@ -4,16 +4,14 @@ const reminds = require("../dynamic/reminds.json");
 
 module.exports.run = async (client, message, args  ) => {
 
-    if (!(reminds[message.author.id])) {
-        reminds[message.author.id] = [];
-    };
+    if (!(reminds[message.author.id])) reminds[message.author.id] = [];
 
     var date = new Date();
     var time = args[0];
     if (!time) return message.reply(client.msg["remindme_time_undefined"]);
     if (!time.match(/[s,m,h,d,w,y]/g)) return message.channel.send(client.msg["remindme_time_invalid"]);
     if (!(args[1])) return message.channel.send(client.msg["remindme_reminder_undefined"]);
-    var themessage = message.content.split(" ").slice(2).join(" ");
+    var reminderText = message.content.split(" ").slice(2).join(" ");
 
     var strunit = time.slice(-1);
     var unit = 1;
@@ -26,17 +24,15 @@ module.exports.run = async (client, message, args  ) => {
 
   time = (time.slice(0, -1));
     var inted = parseInt(time);
-    var newtime = new Date();
-    newtime = (date.getTime() + (unit * 1000 * time));
+    var newTime = new Date();
+    newTime = (date.getTime() + (unit * 1000 * time));
     date = date.getTime() + (unit * 0);
     reminds[message.author.id].push({
-        "reminder": themessage,
-        "time": newtime
-    })
+        "reminder": reminderText,
+        "time": newTime
+    });
+  
     message.channel.send(client.msg["remindme_success"]);
-
-    // Add changes to file
-    fs.writeFile("./dynamic/reminds.json", JSON.stringify(reminds, null, 4), function (err) { if (err) console.log(err);});
 } 
 
 module.exports.config = {
