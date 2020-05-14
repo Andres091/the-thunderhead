@@ -1,21 +1,27 @@
 # The Thunderhead
-[![Discord Bots](https://top.gg/api/widget/lib/629799045954797609.svg)](https://top.gg/bot/629799045954797609) 
+
+[![Discord Bots](https://top.gg/api/widget/lib/629799045954797609.svg)](https://top.gg/bot/629799045954797609)
 [![Discord Bots](https://top.gg/api/widget/status/629799045954797609.svg)](https://top.gg/bot/629799045954797609)
 
+The Thunderhead is a bot based on the popular book series Arc of a Scythe by Neal Shusterman (which you should totally read) that takes place in the future in a “utopian” society featuring immortality for everyone... until you get gleaned by a scythe. The series includes an AI they call “The Thunderhead.” The Thunderhead is basically “The Cloud,” but it knows everything and observes _almost_ everything. This bot is r/scythebookfans and r/scytheposts recreation of that: a multilanguage multiuse Discord self-operating program featuring an economy with a market and real-time stocks, music, math solving power, Arc of a Scythe themed question asking and answering, and more!
 
+## Current Ver. ☁️🐦 3.0.0 | Canary
 
-The Thunderhead is a bot based on the popular book series Arc of a Scythe by Neal Shusterman (which you should totally read) that takes place in the future in a “utopian” society featuring immortality for everyone... until you get gleaned by a scythe. The series includes an AI they call “The Thunderhead.” The Thunderhead is basically “The Cloud,” but it knows everything and observes *almost* everything. This bot is r/scythebookfans and r/scytheposts recreation of that: a multilanguage multiuse Discord self-operating program featuring an economy with a market and real-time stocks, music, math solving power, Arc of a Scythe themed question asking and answering, and more!
+- Split code into multiple files 
+- Recoding Everything From The Ground Up 
+- Bug Fixes
+- Removed Language (will add later)
+- Major Code Cleanup
 
-=======
-## Current Ver. 📋⛅ 2.1.1 | Profiles
+### Todo:
 
- - Scheduled Items
- - Bug Fixes
- - Adding Profiles
-The thunderhead cannot intervene in affairs of the Scythedom. All it can do is watch; with an unblinking eye.
+- Finish Code Cleanup
+- Readd Language
+- Readd Deleted Commands
 
+  The thunderhead cannot intervene in affairs of the Scythedom. All it can do is watch; with an unblinking eye.
 
-\ ゜ o ゜)ノ 
+\ ゜ o ゜)ノ
 
 ## Written by: `Skrub#9999`
 

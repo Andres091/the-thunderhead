@@ -1,0 +1,42 @@
+const Discord = require("discord.js");
+const fs = require("graceful-fs");
+var eco = require('discord-economy');
+const config = require("../static/config.json"); 
+const altlist = require("../dynamic/altlist.json");
+const items = require("../dynamic/items.json")
+const workedRecently = new Set(); 
+
+module.exports.run = async (client, message, args) => {
+  //Voting removed for the the time being
+  let hasVoted = false;
+
+  
+  let failurerate = 40 + (hasVoted * 20);
+  if (altlist.alts.indexOf(message.author.id) >= 0) failurerate = 100;
+  if (workedRecently.has(message.author.id)) {
+      message.channel.send(client.msg["work_rejected"]);
+  } else {
+      workedRecently.add(message.author.id);
+      setTimeout(() => {
+          workedRecently.delete(message.author.id);
+      }, 300000);
+      var output = await eco.Work(message.author.id, {
+          failurerate: failurerate,
+          money: Math.floor((Math.random() * 9) + 1),
+          jobs: ["null"]
+      })
+
+      if (output.earned == 0) return message.reply(client.msg["work_failure"].replace("[PREFIX]", config.prefix))
+      message.channel.send(client.msg["work_success"].replace("[EARNED]", output.earned).replace("[BALANCE]", output.balance).replace("[CURRENCY]", client.emotes["currency_vibes"]).replace("[CURRENCY]", client.emotes["currency_vibes"]))
+      const channel = client.channels.cache.get(config["econ_log_id"]);
+      if (message.guild.id != "625021277295345667") channel.send(`${message.author.username} (${message.author.id}) worked and earned ${output.earned} ${client.emotes["currency_vibes"]}. They now own ${output.balance} ${client.emotes["currency_vibes"]}.`)
+  }
+}
+module.exports.config = {
+  name: "work",
+  aliases: ["moneymaker"],
+  use: "work",
+  description: "Try to work to earn money, five minute cooldown.",
+  state : "gamma",
+  page: 2
+};
