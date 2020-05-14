@@ -1,3 +1,5 @@
 vs
 node_modules
 package-lock.json
+.vs/ProjectSettings.json
+.vs/slnx.sqlite

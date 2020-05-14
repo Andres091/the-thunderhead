@@ -54,7 +54,6 @@ client.suspend = false;
 ********************************/
 
 client.on("ready", () => {
-	console.log("Cirrus is ready to guide you through the stars!")
 	const activities_list = [`to you look at my backbrain`, `the demands of humanity`, `humanity with an unblinking eye`, `the Scythedom, unable to comment`, `you asking ${config.prefix}help`, `millions of conversations at once`, `music || Listen Along!`];
 	const activities_type = ["WATCHING", "LISTENING", "WATCHING", "WATCHING", "LISTENING", "LISTENING", "STREAMING"];
 	console.log(`The Thunderhead has attained consciousness, with ${client.users.cache.size} users, in ${client.channels.cache.size} channels of ${client.guilds.cache.size} guilds.`);
