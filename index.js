@@ -2,12 +2,14 @@
 
 // Import AuthFile
 const authFile = require("./auth.json");
-const auth = authFile.canary;
+const auth = authFile.stable;
 
 // Import ConfigFiles
 const config = require("./static/config.json"); // For RNG, stocks, and other config things
 const cosmetic = require("./static/cosmetic.json"); // For Emotes and Colors
-const alingualMsgs = require("./static/msgs.json"); // For messages that are in a specific language
+const alingualMsgs = require("./static/msgs.json"); // For messages that are in a specific language 
+
+// todo: readd langs!
 
 // Import Modules (for this file)
 const Discord = require("discord.js");
