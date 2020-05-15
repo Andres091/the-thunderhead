@@ -157,6 +157,9 @@
   "kick_invalid": "Please mention a valid member to kick.",
   "kick_rejcted": "You cannot kick this member.",
 
+  "ban_invalid": "Please mention a valid member to ban.",
+  "ban_rejcted": "You cannot ban this member.",
+
   "mute_role_undefined": "Please create a role called `Muted` without the `Send Messages` permission.",
   "mute_user_undefined": "You need to mention someone to make them a Unsavory.",
   "mute_user_invalid": "I'm sorry, but what do you hope to accomplish by doing that?",

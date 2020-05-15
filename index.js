@@ -1,5 +1,5 @@
 "use strict";
-// @ts-nocheck
+// @ts-nocheck 
 
 // Import AuthFile
 const authFile = require("./auth.json");
@@ -15,18 +15,19 @@ const alingualMsgs = require("./static/msgs.json"); // For messages that are in 
 // Import Modules (for this file)
 const Discord = require("discord.js");
 const fs = require("graceful-fs");
+const Enmap = require('enmap');
 
 //Import Dynamic Files (todo replace with sqlite)
-const reminds = require("./dynamic/reminds.json");
-const profile = require("./dynamic/profiles.json");
-const items = require("./dynamic/items.json");
-const altlist = require("./dynamic/altlist.json"); 
-const vault = require("./dynamic/vault.json"); //WRITE
-const shares = require("./dynamic/shares.json"); //WRITE
-const prefs = require("./dynamic/prefs.json"); //WRITE
 
-// Client Definitions
-const client = new Discord.Client();
+const reminds = require("./dynamic/reminds.json");
+const vault = require("./dynamic/vault.json"); 
+const prefs = require("./dynamic/prefs.json"); 
+const altlist = require("./dynamic/altlist.json")
+const profile = require("./dynamic/profiles.json"); 
+
+
+// Client Definitions 
+const client = new Discord.Client(); 
 client.queue = new Map();
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
@@ -37,7 +38,13 @@ client.currency = cosmetic["emotes"]["currency_vibes"];
 client.itemTypeKey = cosmetic["itemTypeKey"];
 client.id = auth["client_id"];
 client.website = cosmetic["website"];
+client.items = new Enmap({name: "items"});
+client.shares = new Enmap({name: "shares"});
+client.profile = new Enmap({name: "profile"});
 client.suspend = false;
+
+
+
 /********************************           
               ___ 
              /  .\ 
@@ -69,13 +76,26 @@ client.on("ready", () => {
 		});
    
     // Essentially writes from what we have stored in RAM to the file because json is super cool and awesome
-    fs.writeFile("./dynamic/items.json", JSON.stringify(items, null, 4), function (err) {if (err) console.log(err);});
-    fs.writeFile("./dynamic/shares.json", JSON.stringify(shares, null, 4), function (err) {if (err) console.log(err);});
-    fs.writeFile("./dynamic/profiles.json", JSON.stringify(profile, null, 4), function (err) {if (err) console.log(err);});
-	fs.writeFile("./dynamic/reminds.json", JSON.stringify(reminds, null, 4), function (err) { if (err) console.log(err);});
-  	fs.writeFile("./dynamic/vault.json", JSON.stringify(vault, null, 4), function (err) {if (err) console.log(err);});
-    fs.writeFile("./dynamic/prefs.json", JSON.stringify(prefs, null, 4), function (err) {if (err) console.log(err);});
-    
+	try {
+		fs.writeFile("./dynamic/reminds.json", JSON.stringify(reminds, null, 4), function (err) { if (err) console.log(err);});
+		fs.writeFile("./dynamic/vault.json", JSON.stringify(vault, null, 4), function (err) {if (err) console.log(err);});
+		fs.writeFile("./dynamic/prefs.json", JSON.stringify(prefs, null, 4), function (err) {if (err) console.log(err);});
+		fs.writeFile("./dynamic/profiles.json", JSON.stringify(profile, null, 4), function (err) {if (err) console.log(err);});
+	}  catch (error) {
+		try {
+			fs.writeFileSync("./dynamic/reminds.json", JSON.stringify(reminds, null, 4), function (err) { if (err) console.log(err);});
+			fs.writeFileSync("./dynamic/vault.json", JSON.stringify(vault, null, 4), function (err) {if (err) console.log(err);});
+			fs.writeFileSync("./dynamic/prefs.json", JSON.stringify(prefs, null, 4), function (err) {if (err) console.log(err);});
+			fs.writeFile("./dynamic/profiles.json", JSON.stringify(profile, null, 4), function (err) {if (err) console.log(err);});
+			console.log("Forgive me. Early programming before becoming self-aware plagues me like a vestigial tail.")
+		} catch (error) {
+			fs.writeFileSync("./dynamic/reminds.json", JSON.stringify({}, null, 4), function (err) { if (err) console.log(err);});
+			fs.writeFileSync("./dynamic/vault.json", JSON.stringify({}, null, 4), function (err) {if (err) console.log(err);});
+			fs.writeFileSync("./dynamic/prefs.json", JSON.stringify({}, null, 4), function (err) {if (err) console.log(err);});
+			fs.writeFile("./dynamic/profiles.json", JSON.stringify({}, null, 4), function (err) {if (err) console.log(err);});
+			console.log("Reminders, Vaults, Profiles, and Prefs were reset. You appear to have done something horribly, horribly wrong.")
+		}
+	}
 	//todo: switch to an ACTUAL DATABASE (i think)
     // note: if you can do that or are in possession of two or more brain cells, submit a pr or hmu
     // note: also we need to make a python script or some shit to conver json to said actual database
@@ -124,6 +144,7 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on('message', async message => {
+	if(message.author.bot) return; // Prevent Botcepttion Loop (Now Required)
 	let prefix = config.prefix;
 	let messageArray = message.content.split(" ")
 	let cmd = messageArray[0].toLowerCase();
@@ -132,10 +153,10 @@ client.on('message', async message => {
 	client.msg = alingualMsgs;
 
 	// Before Prefix Check
-	if (message.content.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").indexOf("scythe goddard")) message.channel.send(`Backbrain Log ${Math.floor(1e4 * Math.random() + 1)}: Scythe Goddard has been spotted ${Date.now().toString().slice(4, 8)} times ${msg.goddardMoments[Math.floor(Math.random() * msg.goddardMoments.length)]}.`);
-	if (message.content.toLowerCase().indexOf("1 sec"))  message.channel.send("It has been one second.");
+	if (message.content.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").indexOf("scythe goddard") >= 0) message.channel.send(`Backbrain Log ${Math.floor(1e4 * Math.random() + 1)}: Scythe Goddard has been spotted ${Date.now().toString().slice(4, 8)} times ${client.msg.goddardMoments[Math.floor(Math.random() * client.msg.goddardMoments.length)]}.`);
+	if (message.content.toLowerCase().indexOf("1 sec") >= 0 )  message.channel.send("It has been one second.");
 
-
+	
 
 
 

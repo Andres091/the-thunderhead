@@ -1,7 +1,7 @@
 {
   "name": "Thunderhead",
-  "version": "3.0.2",
-  "description": "Canary for ScythePosts Thunderhead bot",
+  "version": "3.0.3",
+  "description": "The thunderhead cannot intervene in affairs of the Scythedom. All it can do is watch; with an unblinking eye.",
   "main": "index.js",
   "engines": {
     "node": "12.x"
@@ -12,11 +12,13 @@
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
     "alphavantage": "^2.0.1",
+    "better-sqlite3": "^7.0.1",
     "canvas": "^2.6.1",
     "cat-ascii-faces": "^2.0.0",
     "cat-facts": "^1.0.2",
     "discord-economy": "^1.2.2",
     "discord.js": "discordjs/discord.js",
+    "enmap": "^5.2.4",
     "graceful-fs": "^4.2.4",
     "math-expression-evaluator": "^1.2.22",
     "ms": "^2.1.2",

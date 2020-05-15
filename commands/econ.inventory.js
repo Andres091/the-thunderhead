@@ -1,28 +1,20 @@
 const Discord = require("discord.js");
 const fs = require("graceful-fs");
-var eco = require('discord-economy');
 const config = require("../static/config.json");
-const items = require("../dynamic/items.json");
-const vault = require("../dynamic/vault.json");
-var eco = require('discord-economy');
 
 module.exports.run = async (client, message, args) => {
   let requiredPermission = "USE_EXTERNAL_EMOJIS"; 
   if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
   if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
-
-  let requiredPermission = "EMBED_LINKS"; 
+  requiredPermission = "EMBED_LINKS"; 
   if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
   if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
-  
-let requiredPermission = "USE_EXTERNAL_EMOJIS"; 
+  requiredPermission = "USE_EXTERNAL_EMOJIS"; 
   if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
   if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
-
-  let requiredPermission = "MANAGE_MESSAGES"; 
+  requiredPermission = "MANAGE_MESSAGES"; 
   if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
-
-  let requiredPermission = "ADD_REACTIONS"; 
+  requiredPermission = "ADD_REACTIONS"; 
   if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
   if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
 
@@ -33,9 +25,9 @@ let requiredPermission = "USE_EXTERNAL_EMOJIS";
   user = user.replace(/[@!<>]/g, "");
   if (!message.guild.member(client.user).hasPermission("MANAGE_MESSAGES")) return; //todo: code permdeny system
   if (!message.guild.member(client.user).hasPermission("ADD_REACTIONS")) return;
-  if (!items[user]) return message.channel.send(client.msg["inv_undefined"]);
+  if (!client.items.get(user)) return message.channel.send(client.msg["inv_undefined"]);
   var embeds = [];
-  var myItems = items[user];
+  var myItems = client.items.get(user);
   var count = -1;
   for (var item in myItems) {
       count++;

@@ -3,7 +3,6 @@ const fs = require("graceful-fs");
 var eco = require('discord-economy');
 const config = require("../static/config.json"); 
 const altlist = require("../dynamic/altlist.json");
-const items = require("../dynamic/items.json")
 module.exports.run = async (client, message, args  ) => {
 
   var user = message.mentions.users.first()
@@ -27,12 +26,12 @@ module.exports.run = async (client, message, args  ) => {
       } catch (err) {
           message.channel.send(client.msg["rob_primary_success"]);
           var stealthIncrease = 0;
-          for (var item in items[message.author.id]) {
-              item = items[message.author.id][item];
+          for (var item in client.items.get(message.author.id)) {
+              item = client.items.get(message.author.id)[item];
               if (item.type === "Weapon") stealthIncrease += parseInt(item["theftSuccess"]);
           }
-          for (var item in items[user.id]) {
-              item = items[user.id][item]
+          for (var item in client.items.get(user.id)) {
+              item = client.items.get(user.id)[item]
               if (item.type === "Weapon") stealthIncrease -= parseInt(item["antiTheftSuccess"]);
           }
           stealthIncrease = parseInt(stealthIncrease);
@@ -53,7 +52,7 @@ module.exports.run = async (client, message, args  ) => {
       var balText = (client.msg["rob_secondary_failure"]).replace("[AUTHOR]", message.author.username).replace("[PENALTY]", config["rob_penalty"]).replace("[CURRENCY]", client.emotes["currency_vibes"]).replace("[USER]", user.username);
       var balembed = new Discord.MessageEmbed().addField(user.username, balText).setColor(client.colors["gamble_green"]);
       message.channel.send(balembed);
-      const channel = client.channels.get(config["econ_log_id"]);
+      const channel = client.channels.cache.get(config["econ_log_id"]);
       if (message.guild.id != "625021277295345667") channel.send(balembed);
       if (message.guild.id != "625021277295345667") channel.send(`(${message.author.id}) => (${user.id})`);
   } message.channel.send(client.msg["rob_rejected"]);

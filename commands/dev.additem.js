@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const fs = require("graceful-fs");
 var eco = require('discord-economy');
 const config = require("../static/config.json"); 
-const items = require("../dynamic/items.json"); 
 
 module.exports.run = async (client, message, args) => {
   if (config.sudo.indexOf(message.author.id) < 0) return; // Dev Only
@@ -10,7 +9,7 @@ module.exports.run = async (client, message, args) => {
   let owner = args[0];
   if (!owner) owner = "marketplace";
   owner = owner.replace(/[@!<>]/g, "");
-  if (!items[owner]) items[owner] = {};
+  if (!client.items.get(owner)) client.items.set(owner, {});
   let name = args[1];
   let type = args[2];
   let id = args[3];
@@ -19,7 +18,7 @@ module.exports.run = async (client, message, args) => {
   let imageURL = args[6];
   let description = args.slice(7).join(" ");
   if (!type || !name || !id || !emoji || !cost || !imageURL || !description) return message.channel.send("Missing Field");
-  items[owner][id] = {
+  client.items.set(owner, id) = {
       name: name,
       type: type,
       emoji: emoji,

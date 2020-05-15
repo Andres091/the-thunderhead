@@ -34,7 +34,7 @@ module.exports.run = async (client, message, args) => {
 	else status = (`Offline ${client.emotes["utility_offline"]}`);
   if (user.presence.activities[0] && user.presence.activities[0].type === "STREAMING") status = `Streaming ${client.emotes["utility_live"]}`; 
   
-  let statusBlock = [{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true}];
+  let statusBlock = [{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true}]; // You can be playing atleast 2 games at once. This code accounts for 2 games. todo: make it account for infinite games.
   let thumbnail;
   if (user.presence.activities) { 
     for (const activityIndex in user.presence.activities) {

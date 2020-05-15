@@ -3,7 +3,6 @@ const fs = require("graceful-fs");
 var eco = require('discord-economy');
 const config = require("../static/config.json"); 
 const altlist = require("../dynamic/altlist.json");
-const items = require("../dynamic/items.json")
 const workedRecently = new Set(); 
 
 module.exports.run = async (client, message, args) => {

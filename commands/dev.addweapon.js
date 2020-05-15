@@ -2,13 +2,12 @@ const Discord = require("discord.js");
 const fs = require("graceful-fs");
 var eco = require('discord-economy');
 const config = require("../static/config.json"); 
-const items = require("../dynamic/items.json"); 
 
 module.exports.run = async (client, message, args) => {
   if (config.sudo.indexOf(message.author.id) < 0) return; // Dev Only
       
    let owner = "marketplace";
-    if (!items[owner]) items[owner] = {};
+   if (!client.items.get(owner)) client.items.set(owner, {});
     let name = args[0]
     let theftSuccess = args[1];
     let antiTheftSuccess = args[2]
@@ -16,7 +15,7 @@ module.exports.run = async (client, message, args) => {
     let cost = args[4]
     let description = args.slice(5).join(" ");
     if (!name || !id || !cost || !theftSuccess || !antiTheftSuccess || !description) return message.channel.send("Missing Field");
-    items[owner][id] = {
+    client.items.set(owner, id) = {
         name: (name.charAt(0).toUpperCase() + name.toLowerCase().slice(1)).replace("Thunder", "Thunder Banking Solutions"),
         type: "Weapon",
         emoji: "⚔️",
@@ -27,7 +26,7 @@ module.exports.run = async (client, message, args) => {
         antiTheftSuccess: antiTheftSuccess,
         sellerid: "marketplace"
     };
-    message.channel.send(items[owner][id].name + " was added.")
+    message.channel.send(client.items.get(owner)[id].name + " was added.")
   
 } 
 

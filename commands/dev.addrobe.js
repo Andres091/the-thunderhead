@@ -2,18 +2,17 @@ const Discord = require("discord.js");
 const fs = require("graceful-fs");
 var eco = require('discord-economy');
 const config = require("../static/config.json"); 
-const items = require("../dynamic/items.json"); 
 
 module.exports.run = async (client, message, args) => {
   if (config.sudo.indexOf(message.author.id) < 0) return; // Dev Only
     let owner = "marketplace";
-    if (!items[owner]) items[owner] = {};
+    if (!client.items.get(owner)) client.items.set(owner, {});
     let color = args[0];
     let id = args[1]
     let cost = args[2]
     let description = args.slice(3).join(" ");
     if (!id || !cost || !color || !description) return message.channel.send("Missing Field");
-    items[owner][id] = {
+    client.items.set(owner, id) = {
         name: (color.charAt(0).toUpperCase() + color.toLowerCase().slice(1) + " Robe").replace("Tonist Robe", "Tonist Frock"),
         type: "Robe",
         emoji: "👗",
@@ -23,7 +22,7 @@ module.exports.run = async (client, message, args) => {
         robecolor: color.toLowerCase(),
         sellerid: "marketplace"
     };
-    message.channel.send(items[owner][id].name + " was added.")
+    message.channel.send(client.items.get(owner)[id].name + " was added.")
   
 } 
 

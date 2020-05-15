@@ -1,8 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("graceful-fs");
 var eco = require('discord-economy');
-const config = require("../static/config.json");
-const items = require("../dynamic/items.json");
 const vault = require("../dynamic/vault.json");
 var eco = require('discord-economy');
 
