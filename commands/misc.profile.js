@@ -7,13 +7,13 @@ module.exports.run = async (client, message, args) => {
     let target = message.author.id;
     if (args[0]) if (client.users.cache.get(args[0].replace(/[@!<>]/g, ""))) target = args[0].replace(/[@!<>]/g, "");
 
-    if (!client.profile.get(target)) ((client.profile.set(target, {})) && (message.channel.send(client.msg["profile_setup"]))); // && statements, snazzy.
+    if (!client.profile.get(target)) ((client.profile.set({}, target)) && (message.channel.send(client.msg["profile_setup"]))); // && statements, snazzy.
 
-    if (!client.profile.get(target)["skin"]) client.profile.set(target, "skin", "skin_olive");
-    if (!client.profile.get(target)["face"]) client.profile.set(target, "face", "face_brown_default");
-    if (!client.profile.get(target)["robe"]) client.profile.set(target, "robe", "robe_red");
-    if (!client.profile.get(target)["gem"]) client.profile.set(target, "gem", "gem_none");
-    if (!client.profile.get(target)["backdrop"]) client.profile.set(target, "backdrop", "backdrop_none");
+    if (!client.profile.get(target)["skin"]) client.profile.set(target, "skin_olive" ,"skin"); //todo: fix
+    if (!client.profile.get(target)["face"]) client.profile.set(target, "face_brown_default", "face");
+    if (!client.profile.get(target)["robe"]) client.profile.set(target, "robe_red", "robe");
+    if (!client.profile.get(target)["gem"]) client.profile.set(target, "gem_none", "gem");
+    if (!client.profile.get(target)["backdrop"]) client.profile.set(target, "backdrop_none", "backdrop");
 
 
 
