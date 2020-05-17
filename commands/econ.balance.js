@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const fs = require("graceful-fs");
 var eco = require('discord-economy');
 const Canvas = require('canvas');
-const profile = require("../dynamic/profiles.json");
 
 module.exports.run = async (client, message, args) => {
   let requiredPermission = "ATTACH_FILES"; 
@@ -15,12 +14,12 @@ module.exports.run = async (client, message, args) => {
   var output = await eco.FetchBalance(userToCheck.id);
   let balText = `Balance: ${output.balance}`;
   let font = "Calibri"
-  if (!profile[userToCheck.id]) profile[userToCheck.id] = {}; // Quietly sets up profile.
-  if (!profile[userToCheck.id]["backdrop"]) profile[userToCheck.id]["backdrop"] = "backdrop_none";
+  if (!client.profile.get(userToCheck.id)) client.profile.set(userToCheck.id {}); // Quietly sets up profile.
+  if (!client.profile.get(userToCheck.id)["backdrop"]) client.profile.set(userToCheck.id, "backdrop", "backdrop_none");
 
   const canvas = Canvas.createCanvas(400, 160);
   const ctx = canvas.getContext('2d');
-  const background = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${profile[userToCheck.id]["backdrop"]}.png?v=latest`);
+  const background = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(userToCheck.id)["backdrop"]}.png?v=latest`);
   const darkener = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2Fdarkener.png`);
   const currencyIcon = await Canvas.loadImage(`https://cdn.discordapp.com/emojis/${(client.emotes["currency_vibes"]).split(":")[2].split(">")[0]}.png`);
   await ctx.drawImage(background, 0, 0, 400, 160);

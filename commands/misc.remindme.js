@@ -4,6 +4,13 @@ const reminds = require("../dynamic/reminds.json");
 
 module.exports.run = async (client, message, args  ) => {
 
+    try {
+      let testValue = reminds;
+    } catch (err) {
+      reminds = {}; // Lazy
+      console.log("You did something wrong! Reminds reset!")
+    }
+  
     if (!(reminds[message.author.id])) reminds[message.author.id] = [];
 
     var date = new Date();

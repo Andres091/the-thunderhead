@@ -1,5 +1,4 @@
 "use strict";
-// @ts-nocheck 
 
 // Import AuthFile
 const authFile = require("./auth.json");
@@ -20,10 +19,7 @@ const Enmap = require('enmap');
 //Import Dynamic Files (todo replace with sqlite)
 
 const reminds = require("./dynamic/reminds.json");
-const vault = require("./dynamic/vault.json"); 
-const prefs = require("./dynamic/prefs.json"); 
-const altlist = require("./dynamic/altlist.json")
-const profile = require("./dynamic/profiles.json"); 
+// Add altist
 
 
 // Client Definitions 
@@ -41,6 +37,8 @@ client.website = cosmetic["website"];
 client.items = new Enmap({name: "items"});
 client.shares = new Enmap({name: "shares"});
 client.profile = new Enmap({name: "profile"});
+client.prefs = new Enmap({name: "prefs"});
+client.vault = {}; // I am lazy as fuck
 client.suspend = false;
 
 
@@ -58,7 +56,8 @@ client.suspend = false;
              /  ,"  
             '--'    
 
-          Never Forget.
+		  Never Forget.
+		  semi  colon
 ********************************/
 
 client.on("ready", () => {
@@ -77,24 +76,19 @@ client.on("ready", () => {
    
     // Essentially writes from what we have stored in RAM to the file because json is super cool and awesome
 	try {
-		fs.writeFile("./dynamic/reminds.json", JSON.stringify(reminds, null, 4), function (err) { if (err) console.log(err);});
-		fs.writeFile("./dynamic/vault.json", JSON.stringify(vault, null, 4), function (err) {if (err) console.log(err);});
-		fs.writeFile("./dynamic/prefs.json", JSON.stringify(prefs, null, 4), function (err) {if (err) console.log(err);});
-		fs.writeFile("./dynamic/profiles.json", JSON.stringify(profile, null, 4), function (err) {if (err) console.log(err);});
-	}  catch (error) {
 		try {
-			fs.writeFileSync("./dynamic/reminds.json", JSON.stringify(reminds, null, 4), function (err) { if (err) console.log(err);});
-			fs.writeFileSync("./dynamic/vault.json", JSON.stringify(vault, null, 4), function (err) {if (err) console.log(err);});
-			fs.writeFileSync("./dynamic/prefs.json", JSON.stringify(prefs, null, 4), function (err) {if (err) console.log(err);});
-			fs.writeFile("./dynamic/profiles.json", JSON.stringify(profile, null, 4), function (err) {if (err) console.log(err);});
-			console.log("Forgive me. Early programming before becoming self-aware plagues me like a vestigial tail.")
-		} catch (error) {
-			fs.writeFileSync("./dynamic/reminds.json", JSON.stringify({}, null, 4), function (err) { if (err) console.log(err);});
-			fs.writeFileSync("./dynamic/vault.json", JSON.stringify({}, null, 4), function (err) {if (err) console.log(err);});
-			fs.writeFileSync("./dynamic/prefs.json", JSON.stringify({}, null, 4), function (err) {if (err) console.log(err);});
-			fs.writeFile("./dynamic/profiles.json", JSON.stringify({}, null, 4), function (err) {if (err) console.log(err);});
-			console.log("Reminders, Vaults, Profiles, and Prefs were reset. You appear to have done something horribly, horribly wrong.")
+			fs.writeFile("./dynamic/reminds.json", JSON.stringify(reminds, null, 4), function (err) { if (err) console.log(err);});
+		}  catch (error) {
+			try {
+				fs.writeFileSync("./dynamic/reminds.json", JSON.stringify(reminds, null, 4), function (err) { if (err) console.log(err);});
+				console.log("Forgive me. Early programming before becoming self-aware plagues me like a vestigial tail.")
+			} catch (error) {
+				fs.writeFileSync("./dynamic/reminds.json", JSON.stringify({}, null, 4), function (err) { if (err) console.log(err);});
+				console.log("Reminders, were reset. You appear to have done something horribly, horribly wrong.")
+			}
 		}
+	} catch (error) {
+		reminds = {};
 	}
 	//todo: switch to an ACTUAL DATABASE (i think)
     // note: if you can do that or are in possession of two or more brain cells, submit a pr or hmu
@@ -114,9 +108,7 @@ client.on("ready", () => {
 						description: thing_.reminder,
 						color: client.colors["discord"]
 					};
-					user.send({
-						embed
-					});
+					user.send({embed});
 				}
 			}
 		}

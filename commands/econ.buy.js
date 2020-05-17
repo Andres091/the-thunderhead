@@ -2,7 +2,6 @@ const Discord = require("discord.js");
 const fs = require("graceful-fs");
 var eco = require('discord-economy');
 const config = require("../static/config.json");
-const vault = require("../dynamic/vault.json");
 var eco = require('discord-economy');
 
 module.exports.run = async (client, message, args) => {
@@ -22,9 +21,9 @@ module.exports.run = async (client, message, args) => {
   await eco.AddToBalance(message.author.id, cost * -1);
   if (!client.items.get(message.author.id)) client.items.set(message.author.id, {});
   client.items.set(message.author.id, (client.items.get("marketplace")[toBuy]), toBuy);
-  if (!vault[vendor]) vault[vendor] = {
+  if (!client.vault[vendor]) client.vault[vendor] = {
           amount: cost
-  }; else vault[vendor].amount = (parseInt(vault[vendor].amount) + parseInt(cost));
+  }; else client.vault[vendor].amount = (parseInt(client.vault[vendor].amount) + parseInt(cost));
 
   client.items.delete("marketplace", toBuy)
   item.ownerid = message.author.id;

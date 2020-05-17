@@ -8,11 +8,11 @@ module.exports.run = async (client, message, args) => {
     if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
     
     let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
-    if (!member) return message.reply(client.msg["ban_invalid"]);
-    if (!member.bannable) return message.reply(client.msg["ban_rejected"]);
+    if (!member) return message.channel.send(client.msg["ban_invalid"]);
+    if (!member.bannable) return message.channel.send(client.msg["ban_rejected"]);
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "No Reason Provided";
-    await member.ban(reason).catch(error => message.reply(error));
+    await member.ban(reason).catch(error => message.channel.send(error));
     let banEmbed = new Discord.MessageEmbed()
       .setTitle("User Banned")
       .setDescription(`${member.user.tag} has been banned by ${message.author.tag}`)

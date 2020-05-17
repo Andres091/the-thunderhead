@@ -17,7 +17,7 @@ module.exports.config = {
   name: "intro",
   aliases: [],
   use: "intro",
-  description: "to test my VS Code setup lmao",
-  state : "— From the gleaning journal of H.S. Curie",
+  description: "— From the gleaning journal of H.S. Curie",
+  state : "gamma",
   page: -1
 };

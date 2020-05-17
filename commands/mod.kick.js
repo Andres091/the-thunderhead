@@ -8,11 +8,11 @@ module.exports.run = async (client, message, args) => {
   if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
      
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);
-    if (!member) return message.reply(client.msg["kick_invalid"]);
-    if (!member.kickable) return message.reply(client.msg["kick_rejected"]);
+    if (!member) return message.channel.send(client.msg["kick_invalid"]);
+    if (!member.kickable) return message.channel.send(client.msg["kick_rejected"]);
     let reason = args.slice(1).join(" ");
     if (!reason) reason = "No Reason Provided";
-    await member.kick(reason).catch(error => message.reply(error));
+    await member.kick(reason).catch(error => message.channel.send(error));
     let kickEmbed = new Discord.MessageEmbed()
       .setTitle("User Kicked")
       .setDescription(`${member.user.tag} has been kicked by ${message.author.tag}`)
