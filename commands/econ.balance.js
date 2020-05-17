@@ -15,7 +15,7 @@ module.exports.run = async (client, message, args) => {
   let balText = `Balance: ${output.balance}`;
   let font = "Calibri"
   if (!client.profile.get(userToCheck.id)) client.profile.set(userToCheck.id, {}); // Quietly sets up profile.
-  if (!client.profile.get(userToCheck.id)["backdrop"]) client.profile.set(userToCheck.id, "backdrop", "backdrop_none");
+  if (!client.profile.get(userToCheck.id)["backdrop"]) client.profile.set(userToCheck.id, "backdrop_none", "backdrop");
 
   const canvas = Canvas.createCanvas(400, 160);
   const ctx = canvas.getContext('2d');

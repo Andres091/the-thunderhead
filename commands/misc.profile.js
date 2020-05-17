@@ -52,7 +52,7 @@ module.exports.run = async (client, message, args) => {
             if (!typeOf) return message.channel.send(client.msg["profile_invalid_skin"]);
             typeOf = typeOf.toLowerCase().replace("pale", "white");
             if (typeOf === "white" || typeOf === "olive" || typeOf === "tan" || typeOf === "brown") {
-                client.profile.set(target, "skin", `skin_${typeOf}`);
+                client.profile.set(target, `skin_${typeOf}`, "skin");
                 message.channel.send(client.msg["profile_set_skin"]);
             } else return message.channel.send(client.msg["profile_invalid_skin"]);
 
@@ -61,7 +61,7 @@ module.exports.run = async (client, message, args) => {
             typeOf = typeOf.toLowerCase();
             if (typeOf === "red" || typeOf === "orange" || typeOf === "yellow" || typeOf === "lime" || typeOf === "green" || typeOf === "turquoise" ||
                 typeOf === "blue" || typeOf === "lavender" || typeOf === "purple" || typeOf === "tonist" || typeOf === "black" || typeOf === "white") {
-                    client.profile.set(target, "robe", `robe_${typeOf}`);
+                    client.profile.set(target, `robe_${typeOf}`, "robe");
                 message.channel.send(client.msg["profile_set_robe"]);
             } else return message.channel.send(client.msg["profile_invalid_robe"]);
 
@@ -69,8 +69,8 @@ module.exports.run = async (client, message, args) => {
             if (!typeOf) return message.channel.send(client.msg["profile_invalid_gem"]);
             typeOf = typeOf.toLowerCase();
             if (typeOf == "blue" || typeOf == "green" || typeOf == "purple" || typeOf == "red" || typeOf == "white" || typeOf == "yellow") {
-                client.profile.set(target, "gem", `gem_${typeOf}`);
-            } else client.profile.set(target, "gem", `gem_none`);
+                client.profile.set(target, `gem_${typeOf}`, "gem");
+            } else client.profile.set(target, `gem_none`, "gem");
             message.channel.send(client.msg["profile_set_gem"]);
 
         } else if (toEdit === "expression" || toEdit === "emotion" || toEdit === "face") {
@@ -79,7 +79,7 @@ module.exports.run = async (client, message, args) => {
             if (typeOf === "anger" || typeOf === "blush" || typeOf === "serious" || typeOf === "default") {
                 let faceArgs = (client.profile.get(target)["face"]).split("_");
                 faceArgs[2] = typeOf;
-                client.profile.set(target, "face", faceArgs.join("_"));
+                client.profile.set(target, faceArgs.join("_"),"face" );
                 message.channel.send(client.msg["profile_set_face"])
             } else return message.channel.send(client.msg["profile_invalid_face"]);
 
@@ -89,7 +89,7 @@ module.exports.run = async (client, message, args) => {
             if (typeOf === "black" || typeOf === "brown" || typeOf === "green" || typeOf === "red" || typeOf === "white" || typeOf === "yellow") {
                 let faceArgs = (client.profile.get(target)["face"]).split("_");
                 faceArgs[1] = typeOf;
-                client.profile.set(target, "face", faceArgs.join("_"));
+                client.profile.set(target,faceArgs.join("_"),"face" );
                 message.channel.send(client.msg["profile_set_hair"])
             } else return message.channel.send(client.msg["profile_invalid_hair"]);
 
@@ -97,8 +97,8 @@ module.exports.run = async (client, message, args) => {
             if (!typeOf) return message.channel.send(client.msg["profile_invalid_backdrop"]);
             typeOf = typeOf.toLowerCase();
             if (typeOf == "red" || typeOf == "green" || typeOf == "turquoise" || typeOf == "dream" || typeOf == "incorrect" || typeOf == "correct") {
-                client.profile.set(target, "backdrop", `backdrop_${typeOf}`);
-            } else client.profile.set(target, "backdrop", `backdrop_none`); //  Can't tell if I made this a glitch or a feature. At this point, I'm too scared to ask...
+                client.profile.set(target, `backdrop_${typeOf}`, "backdrop");
+            } else client.profile.set(target, `backdrop_none`,"backdrop" ); //  Can't tell if I made this a glitch or a feature. At this point, I'm too scared to ask...
             message.channel.send(client.msg["profile_set_backdrop"]); 
 
         } else return message.channel.send(client.msg["profile_invalid"]);
