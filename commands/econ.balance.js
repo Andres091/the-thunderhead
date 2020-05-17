@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
   var output = await eco.FetchBalance(userToCheck.id);
   let balText = `Balance: ${output.balance}`;
   let font = "Calibri"
-  if (!client.profile.get(userToCheck.id)) client.profile.set(userToCheck.id {}); // Quietly sets up profile.
+  if (!client.profile.get(userToCheck.id)) client.profile.set(userToCheck.id, {}); // Quietly sets up profile.
   if (!client.profile.get(userToCheck.id)["backdrop"]) client.profile.set(userToCheck.id, "backdrop", "backdrop_none");
 
   const canvas = Canvas.createCanvas(400, 160);
