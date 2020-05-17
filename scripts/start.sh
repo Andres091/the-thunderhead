@@ -1,0 +1,3 @@
+cd ..
+echo Starting Up...
+pm2 start index.js
