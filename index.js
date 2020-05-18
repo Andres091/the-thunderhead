@@ -17,8 +17,18 @@ const fs = require("graceful-fs");
 const Enmap = require('enmap');
 
 //Import Dynamic Files (todo replace with sqlite)
+try {
+	let tryJSON = require("./dynamic/reminds.json");
+} catch (err) {
+	fs.writeFileSync("./dynamic/reminds.json", JSON.stringify({}, null, 4), function (err) { if (err) console.log(err);});
+	console.log("Reminders, were reset. You appear to have done something horribly, horribly wrong.")
+}
 
 const reminds = require("./dynamic/reminds.json");
+
+//genius fucking error handlin', dont @ me
+
+
 // Add altist
 
 
@@ -93,7 +103,8 @@ client.on("ready", () => {
 	//todo: switch to an ACTUAL DATABASE (i think)
     // note: if you can do that or are in possession of two or more brain cells, submit a pr or hmu
     // note: also we need to make a python script or some shit to conver json to said actual database
-    
+		
+		
 		var date = new Date();
 		date = date.getTime() + 1000 * 0;
 		for(var user in reminds) {
@@ -102,7 +113,7 @@ client.on("ready", () => {
 				var thing_ = list[thing];
 				if(date > thing_.time) {
 					reminds[user].splice([thing]);
-					user = client.users.get(user);
+					user = client.users.cache.get(user);
 					var embed = {
 						title: "Reminder " + client.emotes["utility_ping"],
 						description: thing_.reminder,
