@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     let target = message.author.id;
     if (args[0]) if (client.users.cache.get(args[0].replace(/[@!<>]/g, ""))) target = args[0].replace(/[@!<>]/g, "");
 
-    if (!client.profile.get(target)) ((client.profile.set({}, target)) && (message.channel.send(client.msg["profile_setup"]))); // && statements, snazzy.
+    if (!client.profile.get(target)) (client.profile.set(userToCheck, {}, id)) && (message.channel.send(client.msg["profile_setup"])); // && statements, snazzy.
 
     if (!client.profile.get(target)["skin"]) client.profile.set(target, "skin_olive" ,"skin"); //todo: fix
     if (!client.profile.get(target)["face"]) client.profile.set(target, "face_brown_default", "face");
