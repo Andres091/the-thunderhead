@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     let target = message.author.id;
     if (args[0]) if (client.users.cache.get(args[0].replace(/[@!<>]/g, ""))) target = args[0].replace(/[@!<>]/g, "");
 
-    if (!client.profile.get(target)) (client.profile.set((target.id), {"backdrop": "backdrop_red"})) && (message.channel.send(client.msg["profile_setup"])); // && statements, snazzy.
+    if (!client.profile.get(target)) (client.profile.set((target), {"backdrop": "backdrop_red"})) && (message.channel.send(client.msg["profile_setup"])); // && statements, snazzy.
 
     if (!client.profile.get(target)["skin"]) client.profile.set(target, "skin_olive" ,"skin"); //todo: fix
     if (!client.profile.get(target)["face"]) client.profile.set(target, "face_brown_default", "face");
@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args) => {
         ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
         ctx.drawImage(darkener, 0, 0, canvas.width, canvas.height);
 
-        if (target != "629799045954797609" && target != "704354866671124545") {
+        if (target != "629799045954797609" && target != "710298364134293575") {
             const skin = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["skin"]}.png?v=latest`);
             const face = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["face"]}.png?v=latest`);
             const robe = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["robe"]}.png?v=latest`);

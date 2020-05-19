@@ -14,10 +14,10 @@ module.exports.run = async (client, message, args) => {
     alpha.data.intraday(config.stocks[args[0].toUpperCase()][1]).then(data => {
         let stockPrice = (parseInt(data["Time Series (1min)"][Object.keys(data["Time Series (1min)"])[0]]["4. close"]));
         if (output.balance < stockPrice * parseInt(args[1])) return message.channel.send(client.msg["invest_amount_invalid"]);
-        if (!client.shares.get(message.author.id, args[0].toUpperCase())) client.shares.set(message.author.id, args[0].toUpperCase(), 0);
-        client.shares.set(message.author.id, args[0].toUpperCase(), parseInt(args[1]) + (client.shares.get(message.author.id, args[0].toUpperCase()))); 
+        if (!client.shares.get(message.author.id, args[0].toUpperCase())) client.shares.set(message.author.id, 0, args[0].toUpperCase());
+        client.shares.set(message.author.id, parseInt(args[1]) + (client.shares.get(message.author.id, args[0].toUpperCase())), args[0].toUpperCase()); 
         eco.AddToBalance(message.author.id, stockPrice * args[1] * -1)
-        message.channel.send(`Shares purchased for ${stockPrice * args[1]} ${client.emotes["currency_vibes"]}. You now have ${shares[message.author.id][args[0].toUpperCase()]} shares in ${args[0].toUpperCase()}.`)
+        message.channel.send(`Shares purchased for ${stockPrice * args[1]} ${client.emotes["currency_vibes"]}. You now have ${client.shares.get(message.author.id)[args[0].toUpperCase()]} shares in ${args[0].toUpperCase()}.`)
         const channel = client.channels.cache.get(config["econ_log_id"]);
         if (message.guild.id != "625021277295345667") channel.send(`${message.author.username} (${message.author.id})  purchased shares for ${stockPrice * args[1]} ${client.emotes["currency_vibes"]}. they now have ${client.shares.get(message.author.id)[args[0].toUpperCase()]} shares in ${args[0].toUpperCase()}.`)
     });
