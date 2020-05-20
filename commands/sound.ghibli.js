@@ -6,7 +6,6 @@ const ytdl = require("ytdl-core"),
     { Util } = require("discord.js");
 const config = require("../static/config.json"); 
 const cosmetic = require("../static/cosmetic.json"); 
-const msgs = require("../static/msgs.json"); 
 
 module.exports.run = async (client, message, args) => {
 
@@ -17,7 +16,7 @@ module.exports.run = async (client, message, args) => {
   var url = "https://www.youtube.com/watch?v=EmRi0Z7tdTY"
   var video = await ytdl.getBasicInfo(url)
   await message.channel.send(client.msg["music_video_success"].replace("[VIDEO_TITLE]", `${video.title}`))
-  return await queueSong(video, message, message.member.voice.channel, client.queue)
+  return await queueSong(video, message, message.member.voice.channel, client.queue, client)
 }
 
 
@@ -36,7 +35,7 @@ module.exports.config = {
 
 
 //Async - Music
-async function queueSong(video, message, voiceChannel, queue) {
+async function queueSong(video, message, voiceChannel, queue, client) {
 
 
 
@@ -63,16 +62,16 @@ async function queueSong(video, message, voiceChannel, queue) {
             const connection = await voiceChannel.join();
             queueConstruct.connection = connection;
             queue.set(message.guild.id, queueConstruct)
-            playSong(message.guild, queue, queueConstruct.songs[0], message)
+            playSong(message.guild, queue, queueConstruct.songs[0], message, client)
         } catch (e) {
             console.log(e)
-            message.channel.send(msgs["music_rejected"])
+            message.channel.send(client.msg["music_rejected"])
             return queue.delete(message.guild.id)
         }
     } else serverQueue.songs.push(song);
     return;
 }
-async function playSong(guild, queue, song, message) {
+async function playSong(guild, queue, song, message, client) {
 
 
 
@@ -89,6 +88,6 @@ async function playSong(guild, queue, song, message) {
         })
         .on("error", console.error)
         .setVolumeLogarithmic(serverQueue.volume / 250)
-    serverQueue.textChannel.send(msgs["music_video_resolved"].replace("[SONG_TITLE]", song.title))
+    serverQueue.textChannel.send(client.msg["music_video_resolved"].replace("[SONG_TITLE]", song.title))
 }
 const ytsr = (url) => new Promise((resolve, reject) => ytsearch(url, (err, r) => err ? reject(err) : resolve(r)))

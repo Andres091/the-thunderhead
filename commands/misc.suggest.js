@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const fs = require("graceful-fs");
 
-// This is a command template. I hope its self documenting so you don't have to sift through my god-awful code! ^.^
+// Suggestion; make a github account!
 
 module.exports.run = async (client, message, args  ) => {
   
