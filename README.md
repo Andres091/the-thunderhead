@@ -13,9 +13,10 @@ The Thunderhead is a bot based on the popular book series Arc of a Scythe by Nea
 - Finish Code Cleanup
 - Readd Deleted Commands
 
-  🇬🇧: The thunderhead cannot intervene in affairs of the Scythedom. All it can do is watch; with an unblinking eye.
-  🇪🇸: El Thunderhead no puede intervenir en los casos del Scythedom .Todo lo que puede hacer el ver; con un ojo sin parpadeo.
-  🇫🇷: Le thunderhead ne peut pas intervenir dans les affaires de la Scythedom. Tout ce qu'il peut faire, c'est regarder; avec un œil qui ne cille.
+ 
+  - 🇬🇧: The thunderhead cannot intervene in affairs of the Scythedom. All it can do is watch; with an unblinking eye.
+  - 🇪🇸: El Thunderhead no puede intervenir en los casos del Scythedom .Todo lo que puede hacer el ver; con un ojo sin parpadeo.
+  - 🇫🇷: Le thunderhead ne peut pas intervenir dans les affaires de la Scythedom. Tout ce qu'il peut faire, c'est regarder; avec un œil qui ne cille.
 \ ゜ o ゜)ノ
 
 ## Written by: `Skrub#9999`

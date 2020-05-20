@@ -5,8 +5,6 @@ const ytdl = require("ytdl-core"),
     ytsearch = require("yt-search"),
     { Util } = require("discord.js");
 const config = require("../static/config.json"); 
-const cosmetic = require("../static/cosmetic.json"); 
-const msgs = require("../static/msgs.json"); 
 
 module.exports.run = async (client, message, args) => {
 

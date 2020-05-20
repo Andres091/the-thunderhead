@@ -17,7 +17,10 @@ module.exports.run = async (client, message, args) => {
         if (!client.shares.get(message.author.id, args[0].toUpperCase())) client.shares.set(message.author.id, 0, args[0].toUpperCase());
         client.shares.set(message.author.id, parseInt(args[1]) + (client.shares.get(message.author.id, args[0].toUpperCase())), args[0].toUpperCase()); 
         eco.AddToBalance(message.author.id, stockPrice * args[1] * -1)
-        message.channel.send(`Shares purchased for ${stockPrice * args[1]} ${client.emotes["currency_vibes"]}. You now have ${client.shares.get(message.author.id)[args[0].toUpperCase()]} shares in ${args[0].toUpperCase()}.`)
+        
+        
+        message.channel.send(client.msg["invest_success"]).replace("[COST]", stockPrice*args[1]).replace("[CURRENCY]", client.emotes["currency_vibes"]).replace("[AMOUNT]",client.shares.get(message.author.id)[args[0].toUpperCase()]).replace("[STOCK]", args[0].toUpperCase())
+        
         const channel = client.channels.cache.get(config["econ_log_id"]);
         if (message.guild.id != "625021277295345667") channel.send(`${message.author.username} (${message.author.id})  purchased shares for ${stockPrice * args[1]} ${client.emotes["currency_vibes"]}. they now have ${client.shares.get(message.author.id)[args[0].toUpperCase()]} shares in ${args[0].toUpperCase()}.`)
     });

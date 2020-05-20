@@ -7,6 +7,8 @@ const auth = authFile.stable;
 // Import ConfigFiles
 const config = require("./static/config.json"); // For RNG, stocks, and other config things
 const cosmetic = require("./static/cosmetic.json"); // For Emotes and Colors
+
+
 const alingualMsgs = require("./static/msgs.json"); // For messages that are in a specific language 
 
 // todo: readd langs!
@@ -153,7 +155,10 @@ client.on('message', async message => {
 	let cmd = messageArray[0].toLowerCase();
 	let args = messageArray.slice(1);
 	
-	client.msg = alingualMsgs;
+	if(!client.prefs.get(message.author.id)) client.prefs.set(message.author.id, {});
+	if(!client.prefs.get(message.author.id)["language"]) client.prefs.set(message.author.id, "en", "language");
+
+	client.msg = alingualMsgs["en"];
 
 	// Before Prefix Check
 	if (message.content.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").indexOf("scythe goddard") >= 0) message.channel.send(`Backbrain Log ${Math.floor(1e4 * Math.random() + 1)}: Scythe Goddard has been spotted ${Date.now().toString().slice(4, 8)} times ${client.msg.goddardMoments[Math.floor(Math.random() * client.msg.goddardMoments.length)]}.`);
