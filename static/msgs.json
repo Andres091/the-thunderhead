@@ -6,7 +6,6 @@
     "completion":"100",
     "rejected": "Bot going through maintenance, please check back later.",
     "language_undefined": "You have set it so that I speak to you in English (EN). To Select a different language; run this command again but specify a language code:\n",
-    a
 
 
     "rejcted_dj": "You do not have the `[ROLE_DJ]` and thus cannot use this command.",
