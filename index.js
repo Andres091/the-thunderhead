@@ -158,7 +158,7 @@ client.on('message', async message => {
 	if(!client.prefs.get(message.author.id)) client.prefs.set(message.author.id, {});
 	if(!client.prefs.get(message.author.id)["language"]) client.prefs.set(message.author.id, "en", "language");
 
-	client.msg = alingualMsgs["en"];
+	client.msg = alingualMsgs[client.prefs.get(message.author.id)["language"]];
 
 	// Before Prefix Check
 	if (message.content.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").indexOf("scythe goddard") >= 0) message.channel.send(`Backbrain Log ${Math.floor(1e4 * Math.random() + 1)}: Scythe Goddard has been spotted ${Date.now().toString().slice(4, 8)} times ${client.msg.goddardMoments[Math.floor(Math.random() * client.msg.goddardMoments.length)]}.`);

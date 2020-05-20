@@ -1,12 +1,12 @@
 const Discord = require("discord.js");
 const fs = require("graceful-fs");
-let msgs = require("../dynamic/msgs.json")
+let msgs = require("../static/msgs.json")
 // todo: something with aliases
 
 module.exports.run = async (client, message, args  ) => {
   let languageDataString = ""; //Have it as a string (now i wish i could delcare as str)  
   for (let languageCode in msgs) {
-    languageDataString += `${msgs[languageCode]["flag"]}  ${msgs[languageCode].aliases[0]}: ${languageCode} (${msgs[languageCode]["completion"]}% Complete)\n`;
+    languageDataString += `${msgs[languageCode]["flag"]}  ${msgs[languageCode].aliases[0]}: \`${languageCode}\` (${msgs[languageCode]["completion"]}% Complete)\n`;
   }
   let undefinedArgsZeroEmbed = new Discord.MessageEmbed()
     .setTitle("🌎")
@@ -25,9 +25,9 @@ module.exports.run = async (client, message, args  ) => {
 
 module.exports.config = {
   name: "language",
-  aliases: [],
-  use: "lang",
+  aliases: ["lang"],
+  use: "language [Language]",
   description: "Set the language I speak to you in! If I do not have your prefered language on hand, you can help translate.",
   state : "gamma",
-  page: -1
+  page: 1
 };
