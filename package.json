@@ -26,7 +26,8 @@
     "weather-js": "^2.0.0",
     "yt-search": "^1.1.2",
     "ytdl-core": "^2.1.2",
-    "ytpl": "^0.1.21"
+    "ytpl": "^0.1.21",
+    "nerdamer":"^1.1.4"
   },
   "repository": {
     "url": "https://github.com/humboldt123/the-thunderhead"

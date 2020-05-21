@@ -194,7 +194,7 @@
   "es": {
     "aliases": ["Español", "Espagnol", "Spanish"],
     "flag": "🇪🇸",
-    "tagline": "El Thunderhead no puede intervenir en los casos del Scythedom .Todo lo que puede hacer el ver; con un ojo sin parpadeo.",
+    "tagline": "El Thunderhead no puede intervenir en los casos del Scythedom. Todo lo que puede hacer el ver; con un ojo sin parpadeo.",
     "completion":"0.1",
     "rejected": "Bot going through maintenance, please check back later.",
     "language_undefined": "You have set it so that I speak to you in Spanish (ES). To Select a different language; run this command again but specify a language code:\n",
@@ -388,9 +388,9 @@
     "aliases": ["Français", "French", "Francés"],
     "flag": "🇫🇷",
     "tagline": "Le thunderhead ne peut pas intervenir dans les affaires de la Scythedom. Tout ce qu'il peut faire, c'est regarder; avec un œil qui ne cille.",
-    "completion":"0.1",
-    "rejected": "Bot going through maintenance, please check back later.",
-    "language_undefined": "You have set it so that I speak to you in French (FR). To Select a different language; run this command again but specify a language code:\n",
+    "completion":"1.5",
+    "rejected": "Il y a un bug donc le bot est temporairement désactivé. Veuillez réessayer plus tard.",
+    "language_undefined": "Je vais vous parler en Francais (FR). Afin de sélectionner une langue différente, réexécutez cette commande mais spécifiez un code de langue:\n",
     
 
 
@@ -418,10 +418,10 @@
     "rejected_user_permission_ATTACH_FILES": "You do not have the `Attach Files` permission and thus cannot use this command.",
     "rejected_client_permission_ATTACH_FILES": "I cannot execute this command without the `Attach Files` permission.",
 
-    "help_command_invalid": "Unfortunately, that is not a valid command.",
-    "help_page_invalid": "I could not find any help page at that number.",
+    "help_command_invalid": "Désolé, ce n'est pas un valide command.",
+    "help_page_invalid": "Je n'ai pas pu en trouver aidez page à ce numéro.",
 
-    "ping_pending": "Pinging local Thunderhead server...",
+    "ping_pending": "Pinger le serveur thunderhead local...",
     "ping_resolved": "Pong! 🏓",
 
     "remindme_time_undefined": "Please specify a time.",
@@ -441,7 +441,7 @@
     "userinfo_invalid": "Please *mention* a valid user.",
     "userinfo_not_in_guild": "Not in this Server",
 
-    "profile_setup": "Profile setup.",
+    "profile_setup": "Profil configuré",
     "profile_invalid_skin": "Please select a valid skin color: Pale, Olive, Tan, or Brown.",
     "profile_set_skin": "Succesfully set skin color.",
     "profile_invalid_robe": "Please select a valid robe: Red, Orange, Yellow, Lime, Green, Turquoise, Blue, Lavender, Purple, Tonist, Black, or White.",
@@ -458,7 +458,7 @@
 
     "roll_undefined": "How much would you like to gamble? If I were you, I’d choose wisely, but I cannot stop you.",
     "roll_invalid": "You do not have sufficient funds to roll that amount.",
-    "roll_nan": "That is not a number.",
+    "roll_nan": "Ce n'est pas un nombre.",
 
     "pay_user_undefined": "Please specify who you wish to pay.",
     "pay_amount_undefined": "Please specify how much you wish to pay.",

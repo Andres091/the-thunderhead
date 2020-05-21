@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const fs = require("graceful-fs");
 var eco = require("discord-economy");
+const algebra = require("nerdamer");
 const config = require("../static/config.json");
 
 function clean(text) {
