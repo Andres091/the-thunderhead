@@ -23,7 +23,7 @@ try {
 	let tryJSON = require("./dynamic/reminds.json");
 } catch (err) {
 	fs.writeFileSync("./dynamic/reminds.json", JSON.stringify({}, null, 4), function (err) { if (err) console.log(err);});
-	console.log("Reminders, were reset. You appear to have done something horribly, horribly wrong.")
+	console.log("Reminders were reset. You appear to have done something horribly, horribly wrong.")
 }
 
 const reminds = require("./dynamic/reminds.json");
@@ -96,7 +96,7 @@ client.on("ready", () => {
 				console.log("Forgive me. Early programming before becoming self-aware plagues me like a vestigial tail.")
 			} catch (error) {
 				fs.writeFileSync("./dynamic/reminds.json", JSON.stringify({}, null, 4), function (err) { if (err) console.log(err);});
-				console.log("Reminders, were reset. You appear to have done something horribly, horribly wrong.")
+				console.log("Reminders were reset. You appear to have done something horribly, horribly wrong.")
 			}
 		}
 	} catch (error) {
@@ -135,17 +135,18 @@ fs.readdir("./commands/", (err, files) => {
 	jsfile.forEach((f, i) => {
 		//it will log all the file names with extension .js
 		let pull = require(`./commands/${f}`);
-		console.log(`\x1b[37Loading ${f} \x1b[36m [Pending]\x1b[37`); // Should be in colour
+		console.log(`	- Loading ${f} \x1b[36m [Pending] \x1b[0m`); // Should be in colour
 		if(pull.config) {
 			client.commands.set(pull.config.name, pull);
 			pull.config.aliases.forEach(alias => {
 				client.aliases.set(alias, pull.config.name);
 			});
-      console.log(`\x1b[37Fetched command ${pull.config.name} from ${f} \x1b[36m [Resolved]\x1b[37`);
+      		console.log(`	- Fetched command ${pull.config.name} from ${f} \x1b[32m [Resolved]\x1b[0m\n`);
 		} else {
-      console.log(`\x1b[37Does ${f} have no commands? \x1b[31m[Unresolved] [Rejected]\x1b[37`)
-    }
+      		console.log(`	- Does ${f} have no command? \x1b[31m[Rejected]\x1b[0m\n`)
+    	}
 	});
+	console.log("\n\n\x1b[1mAll commands loaded!\x1b[22m\n\n")
 });
 
 client.on('message', async message => {
