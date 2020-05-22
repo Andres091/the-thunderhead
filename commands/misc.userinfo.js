@@ -10,10 +10,8 @@ function timeConverter(unixTimestamp){
   var month = months[timestampDateObject.getMonth()];
   var date = timestampDateObject.getDate();
   var hour = timestampDateObject.getHours();
-  if (hour > 12) {
-    let afternoon = "PM"
-    hour-=12
-  }
+  let afternoon;
+  if (hour > 12) ((afternoon = "PM") && (hour-=12))
   var minute = timestampDateObject.getMinutes();
   var second = timestampDateObject.getSeconds();
   var time = `${date} ${month} ${year} ${hour}${minute}${second} ${afternoon || "AM"}`;
