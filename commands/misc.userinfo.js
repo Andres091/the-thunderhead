@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const fs = require("graceful-fs");
 var eco = require('discord-economy');
+const Canvas = require('canvas');
 
 module.exports.run = async (client, message, args) => {
 	if(!args[0]) return message.channel.send(client.msg["userinfo_undefined"]);
@@ -24,8 +25,9 @@ module.exports.run = async (client, message, args) => {
   if (user.presence.clientStatus["desktop"]) devices += `Desktop ${client.emotes["utility_desktop"]}\n`;
   if (user.presence.clientStatus["mobile"]) devices += `Mobile ${client.emotes["utility_mobile"]}\n`; 
   if (user.presence.clientStatus["web"]) devices += `Web ${client.emotes["utility_web"]}\n`;
-  } else if (user.bot) devices = client.emotes["utility_bot"]; else devices = "Not Online";
-  
+  } else devices += "Not Online";
+  if (user.bot) devices = client.emotes["utility_bot"]; // BOT tag displays regardless
+
 	let status;
 	if (user.presence.status === "online") status = (`Online ${client.emotes["utility_online"]}`);
 	else if(user.presence.status === "idle") status = (`Idle ${client.emotes["utility_idle"]}`);
@@ -34,8 +36,44 @@ module.exports.run = async (client, message, args) => {
 	else status = (`Offline ${client.emotes["utility_offline"]}`);
   if (user.presence.activities[0] && user.presence.activities[0].type === "STREAMING") status = `Streaming ${client.emotes["utility_live"]}`; 
   
-  let statusBlock = [{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true}]; // You can be playing atleast 2 games at once. This code accounts for 2 games. todo: make it account for infinite games.
+  let statusBlock = [{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true}]; // You can be playing at least 2 games at once. This code accounts for 2 games. todo: make it account for infinite games.
   let thumbnail;
+
+
+  try {
+    let target = user.id;
+    const canvas = Canvas.createCanvas(512, 512);
+    const ctx = canvas.getContext('2d');
+    const background = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["backdrop"]}.png?v=latest`);
+    const darkener = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2Fdarkener.png`);
+    ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(darkener, 0, 0, canvas.width, canvas.height);
+
+    if (target != "629799045954797609" && target != "710298364134293575") {
+        const skin = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["skin"]}.png?v=latest`);
+        const face = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["face"]}.png?v=latest`);
+        const robe = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["robe"]}.png?v=latest`);
+        const gem = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["gem"]}.png?v=latest`);
+        const weapon = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["weapon"]}.png?v=latest`);
+        ctx.drawImage(skin, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(face, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(robe, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(gem, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(weapon, 0, 0, canvas.width, canvas.height);
+    } else {
+        const bot = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F512${target}.png?v=latest`);
+        ctx.drawImage(bot, 0, 0, canvas.width, canvas.height);
+    }
+
+    thumbnail = new Discord.MessageAttachment(canvas.toBuffer(), 'scythe-avatar.png');
+  } catch (err) {
+    thumbnail = "";
+  }
+
+
+
+
+
   if (user.presence.activities) { 
     for (const activityIndex in user.presence.activities) {
       const activity = user.presence.activities[activityIndex];

@@ -68,7 +68,9 @@
     "profile_set_hair": "Succesfully set hair colour.",
     "profile_invalid_backdrop": "Please select what backdrop you want: Red, Green, Turquoise, Dream, Incorrect, Correct, or None.",
     "profile_set_backdrop": "Successfully set backdrop.",
-    "profile_invalid": "Valid Profile Settings: Robe, Skin, Hair, Gems, Backdrop, and Face.",
+    "profile_invalid_weapon": "Please select what backdrop you want: Dagger, Sword, Fire, Pistol, Scythe or None.",
+    "profile_set_weapon": "Successfully set weapon.",
+    "profile_invalid": "Valid Profile Settings:\nRobe, Skin, Hair, Gems, Backdrop, Face, Weapon.",
 
     "roll_undefined": "How much would you like to gamble? If I were you, I’d choose wisely, but I cannot stop you.",
     "roll_invalid": "You do not have sufficient funds to roll that amount.",
@@ -261,7 +263,7 @@
     "profile_set_hair": "Succesfully set hair colour.",
     "profile_invalid_backdrop": "Please select what backdrop you want: Red, Green, Turquoise, Dream, Incorrect, Correct, or None.",
     "profile_set_backdrop": "Successfully set backdrop.",
-    "profile_invalid": "Valid Profile Settings: Robe, Skin, Hair, Gems, Backdrop, and Face.",
+    "profile_invalid": "Valid Profile Settings:\nRobe, Skin, Hair, Gems, Backdrop, Face, Weapon.",
 
     "roll_undefined": "How much would you like to gamble? If I were you, I’d choose wisely, but I cannot stop you.",
     "roll_invalid": "You do not have sufficient funds to roll that amount.",
@@ -454,7 +456,7 @@
     "profile_set_hair": "Succesfully set hair colour.",
     "profile_invalid_backdrop": "Please select what backdrop you want: Red, Green, Turquoise, Dream, Incorrect, Correct, or None.",
     "profile_set_backdrop": "Successfully set backdrop.",
-    "profile_invalid": "Valid Profile Settings: Robe, Skin, Hair, Gems, Backdrop, and Face.",
+    "profile_invalid": "Valid Profile Settings:\nRobe, Skin, Hair, Gems, Backdrop, Face, Weapon.",
 
     "roll_undefined": "How much would you like to gamble? If I were you, I’d choose wisely, but I cannot stop you.",
     "roll_invalid": "You do not have sufficient funds to roll that amount.",

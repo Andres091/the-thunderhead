@@ -14,6 +14,7 @@ module.exports.run = async (client, message, args) => {
     if (!client.profile.get(target)["robe"]) client.profile.set(target, "robe_red", "robe");
     if (!client.profile.get(target)["gem"]) client.profile.set(target, "gem_none", "gem");
     if (!client.profile.get(target)["backdrop"]) client.profile.set(target, "backdrop_none", "backdrop");
+    if (!client.profile.get(target)["weapon"]) client.profile.set(target, "weapon_none", "weapon");
 
 
 
@@ -31,10 +32,12 @@ module.exports.run = async (client, message, args) => {
             const face = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["face"]}.png?v=latest`);
             const robe = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["robe"]}.png?v=latest`);
             const gem = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["gem"]}.png?v=latest`);
+            const weapon = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["weapon"]}.png?v=latest`);
             ctx.drawImage(skin, 0, 0, canvas.width, canvas.height);
             ctx.drawImage(face, 0, 0, canvas.width, canvas.height);
             ctx.drawImage(robe, 0, 0, canvas.width, canvas.height);
             ctx.drawImage(gem, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(weapon, 0, 0, canvas.width, canvas.height);
         } else {
             const bot = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F512${target}.png?v=latest`);
             ctx.drawImage(bot, 0, 0, canvas.width, canvas.height);
@@ -96,12 +99,19 @@ module.exports.run = async (client, message, args) => {
         } else if (toEdit === "backdrop" || toEdit === "background" || toEdit === "enviroment") {
             if (!typeOf) return message.channel.send(client.msg["profile_invalid_backdrop"]);
             typeOf = typeOf.toLowerCase();
-            if (typeOf == "red" || typeOf == "green" || typeOf == "turquoise" || typeOf == "dream" || typeOf == "incorrect" || typeOf == "correct") {
+            if (typeOf === "red" || typeOf === "green" || typeOf === "turquoise" || typeOf === "dream" || typeOf === "incorrect" || typeOf === "correct") {
                 client.profile.set(target, `backdrop_${typeOf}`, "backdrop");
             } else client.profile.set(target, `backdrop_none`,"backdrop" ); //  Can't tell if I made this a glitch or a feature. At this point, I'm too scared to ask...
             message.channel.send(client.msg["profile_set_backdrop"]); 
 
-        } else return message.channel.send(client.msg["profile_invalid"]);
+        } else if (toEdit === "weapon" || toEdit === "weapons") {
+            if (!typeOf) return message.channel.send(client.msg["profile_invalid_weapon"]);
+            typeOf = typeOf.toLowerCase().replace("gun", "pistol").replace("knife", "dagger").replace("blade", "sword").replcae("flamethrower", "fire").replace("fire", "flame");
+            if (typeOf === "scythe" || typeOf === "pistol" || typeOf === "dagger" || typeOf === "sword" || typeOf === "flame" || typeOf === "none") {
+                client.profile.set(target, `weapon_${typeOf}`, "weapon")
+            } else return message.channel.send(client.msg["profile_weapon_invalid"])
+        }
+        else return message.channel.send(client.msg["profile_invalid"]);
 
     }
 
