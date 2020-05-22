@@ -26,7 +26,7 @@ module.exports.run = async (client, message, args) => {
   if (user.presence.clientStatus["mobile"]) devices += `Mobile ${client.emotes["utility_mobile"]}\n`; 
   if (user.presence.clientStatus["web"]) devices += `Web ${client.emotes["utility_web"]}\n`;
   } else devices += "Not Online";
-  if (user.bot) devices = client.emotes["utility_bot"]; // BOT tag displays regardless
+  if (user.bot) devices = client.emotes["utility_bot"]; // BOT tag now displays regardless
 
 	let status;
 	if (user.presence.status === "online") status = (`Online ${client.emotes["utility_online"]}`);
@@ -36,7 +36,7 @@ module.exports.run = async (client, message, args) => {
 	else status = (`Offline ${client.emotes["utility_offline"]}`);
   if (user.presence.activities[0] && user.presence.activities[0].type === "STREAMING") status = `Streaming ${client.emotes["utility_live"]}`; 
   
-  let statusBlock = [{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true},{ name: "​", value: "​", inline: true}]; // You can be playing at least 2 games at once. This code accounts for 2 games. todo: make it account for infinite games.
+  let statusBlock = []; 
   let thumbnail;
 
 
@@ -96,7 +96,8 @@ module.exports.run = async (client, message, args) => {
       } else (presenceName = (activity.type).toLowerCase().charAt(0).toUpperCase() + (activity.type).toLowerCase().slice(1)) && (presenceDetails = activity.name);
       
       if (activity.assets && activity.type === "PLAYING" && activity.assets.largeImage) thumbnail = `https://cdn.discordapp.com/app-assets/${activity.applicationID}/${activity.assets.largeImage}.png`;
-      
+      statusBlock.push({ name: "​", value: "​", inline: true});
+
       (statusBlock[activityIndex]["name"] = presenceName) && (statusBlock[activityIndex]["value"] = presenceDetails);
     }
   } else (statusBlock[0]["name"] = "Activity") && (statusBlock[0]["value"] = "Nothing");
@@ -122,7 +123,8 @@ module.exports.run = async (client, message, args) => {
     .setFooter("Thunderhead Backbrain", client.user.avatarURL())
     .setColor(client.colors["discord"]);
   
-  message.channel.send({ files: [profile], embed: userinfoEmbed);
+  if (thumbnail.startsWith("attachment://")) return message.channel.send({ files: [profile], embed: userinfoEmbed});
+  message.channel.send(userinfoEmbed);
 }
 
 module.exports.config = {
