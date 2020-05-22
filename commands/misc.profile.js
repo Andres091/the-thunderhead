@@ -43,7 +43,7 @@ module.exports.run = async (client, message, args) => {
             ctx.drawImage(bot, 0, 0, canvas.width, canvas.height);
         }
 
-        const attachment = canvas.toBuffer();
+        const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'scythe-avatar.png');
         message.channel.send(`Profile:`, attachment);
       
     } else {

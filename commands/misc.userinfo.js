@@ -65,7 +65,7 @@ module.exports.run = async (client, message, args) => {
         ctx.drawImage(bot, 0, 0, canvas.width, canvas.height);
     }
 
-    thumbnail = new Discord.MessageAttachment(canvas.toBuffer(), 'scythe-avatar.png');
+    thumbnail = canvas.toDataURL();
   } catch (err) {
     thumbnail = "";
   }
