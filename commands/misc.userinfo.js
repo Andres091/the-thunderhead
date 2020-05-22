@@ -3,8 +3,28 @@ const fs = require("graceful-fs");
 var eco = require('discord-economy');
 const Canvas = require('canvas');
 
+function timeConverter(unixTimestamp){
+  var timestampDateObject = new Date(unixTimestamp * 1000);
+  var months = ['January','Febuary','March','April','May','June','July','August','September','October','November','December'];
+  var year = timestampDateObject.getFullYear();
+  var month = months[timestampDateObject.getMonth()];
+  var date = timestampDateObject.getDate();
+  var hour = timestampDateObject.getHours();
+  if (hour > 12) {
+    let afternoon = "PM"
+    hour-=12
+  }
+  var minute = timestampDateObject.getMinutes();
+  var second = timestampDateObject.getSeconds();
+  var time = `${date} ${month} ${year} ${hour}${minute}${second} ${afternoon || "AM"}`;
+  return time;
+}
+
+
 module.exports.run = async (client, message, args) => {
-	if(!args[0]) return message.channel.send(client.msg["userinfo_undefined"]);
+
+
+  if(!args[0]) return message.channel.send(client.msg["userinfo_undefined"]);
 	let user = client.users.cache.get(args[0].replace(/[@!<>]/g, ""));
 	if(!user) return message.channel.send(client.msg["userinfo_invalid"]);
   
@@ -17,7 +37,7 @@ module.exports.run = async (client, message, args) => {
   let guildJoinDate = client.msg["userinfo_not_in_guild"];
   
   const userJoinDate = `${user.createdAt.getDate()+1}-${user.createdAt.getMonth()+1}-${user.createdAt.getFullYear()} @ ${user.createdAt.getHours()}:${user.createdAt.getMinutes()}:${user.createdAt.getSeconds()}`;
-	if (message.guild.member(user)) (guildJoinDate = `${message.guild.member(user).joinedAt.getDate()+1}-${message.guild.member(user).joinedAt.getMonth()+1}-${message.guild.member(user).joinedAt.getFullYear()} @ ${message.guild.member(user).joinedAt.getHours()}:${message.guild.member(user).joinedAt.getMinutes()}:${message.guild.member(user).joinedAt.getSeconds()}`) && (guildNickname = message.guild.member(user).nickname || user.username);
+	if (message.guild.member(user)) (guildJoinDate = timeConverter(message.member(user).joinedTimestamp)) && (guildNickname = message.guild.member(user).nickname || user.username);
 	
 	
   let game = user.presence.activities;

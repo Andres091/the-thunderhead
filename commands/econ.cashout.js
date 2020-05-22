@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
         let stockPrice = (parseInt(data["Time Series (1min)"][Object.keys(data["Time Series (1min)"])[0]]["4. close"]));
         client.shares.set(message.author.id, (client.shares.get(message.author.id, args[0].toUpperCase()))-parseInt(args[1]), args[0].toUpperCase())
         eco.AddToBalance(message.author.id, stockPrice * args[1])
-        message.channel.send(client.msg["cashout_success"]).replace("[COST]", stockPrice*args[1]).replace("[CURRENCY]", client.emotes["currency_vibes"]).replace("[AMOUNT]",client.shares.get(message.author.id)[args[0].toUpperCase()]).replace("[STOCK]", args[0].toUpperCase())
+        message.channel.send(client.msg["cashout_success"].replace("[COST]", stockPrice*args[1]).replace("[CURRENCY]", client.emotes["currency_vibes"]).replace("[AMOUNT]",client.shares.get(message.author.id)[args[0].toUpperCase()]).replace("[STOCK]", args[0].toUpperCase()))
          const channel = client.channels.cache.get(config["econ_log_id"]);
         channel.send(`Shares sold for ${stockPrice * args[1]} ${client.emotes["currency_vibes"]}. ${message.author.username} (${message.author.id}) now has ${client.shares.get(message.author.id)[args[0].toUpperCase()]} shares in ${args[0].toUpperCase()}.`)
     })
