@@ -14,7 +14,7 @@ function timeConverter(unixTimestamp){
   if (hour > 12) ((afternoon = "PM") && (hour-=12))
   var minute = timestampDateObject.getMinutes();
   var second = timestampDateObject.getSeconds();
-  var time = `${date} ${month} ${year} ${hour}${minute}${second} ${afternoon || "AM"}`;
+  var time = `${date} ${month} ${year} ${hour}:${minute}:${second} ${afternoon || "AM"}`;
   return time;
 }
 
@@ -34,7 +34,7 @@ module.exports.run = async (client, message, args) => {
 	let guildNickname;
   let guildJoinDate = client.msg["userinfo_not_in_guild"];
   
-  const userJoinDate = `${user.createdAt.getDate()+1}-${user.createdAt.getMonth()+1}-${user.createdAt.getFullYear()} @ ${user.createdAt.getHours()}:${user.createdAt.getMinutes()}:${user.createdAt.getSeconds()}`;
+  const userJoinDate = timeConverter(user.createdTimestamp);
 	if (message.guild.member(user)) (guildJoinDate = timeConverter(message.guild.member(user).joinedTimestamp)) && (guildNickname = message.guild.member(user).nickname || user.username);
 	
 	
