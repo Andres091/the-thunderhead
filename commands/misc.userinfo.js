@@ -4,7 +4,7 @@ var eco = require('discord-economy');
 const Canvas = require('canvas');
 
 function timeConverter(unixTimestamp){
-  var timestampDateObject = new Date(unixTimestamp * 1000);
+  var timestampDateObject = new Date(unixTimestamp);
   var months = ['January','Febuary','March','April','May','June','July','August','September','October','November','December'];
   var year = timestampDateObject.getFullYear();
   var month = months[timestampDateObject.getMonth()];
@@ -99,7 +99,7 @@ module.exports.run = async (client, message, args) => {
       let presenceName;
       let presenceDetails;
       let emoji;
-      presenceName = (activity.name);
+      presenceName = (activity.name).replace("Listening", "Listening To");
       
       if (activity.details) presenceDetails = activity.detais;
       if (presenceName === "Custom Status") {
