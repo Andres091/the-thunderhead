@@ -109,6 +109,7 @@ module.exports.run = async (client, message, args) => {
             typeOf = typeOf.toLowerCase().replace("gun", "pistol").replace("knife", "dagger").replace("blade", "sword").replace("flamethrower", "fire").replace("fire", "flame");
             if (typeOf === "scythe" || typeOf === "pistol" || typeOf === "dagger" || typeOf === "sword" || typeOf === "flame" || typeOf === "none") {
                 client.profile.set(target, `weapon_${typeOf}`, "weapon")
+                message.channel.send(client.msg["profile_set_weapon"]);
             } else return message.channel.send(client.msg["profile_weapon_invalid"])
         }
         else return message.channel.send(client.msg["profile_invalid"]);
