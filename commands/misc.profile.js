@@ -43,7 +43,7 @@ module.exports.run = async (client, message, args) => {
             ctx.drawImage(bot, 0, 0, canvas.width, canvas.height);
         }
 
-        const attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'scythe-avatar.png');
+        const attachment = canvas.toBuffer();
         message.channel.send(`Profile:`, attachment);
       
     } else {
@@ -106,7 +106,7 @@ module.exports.run = async (client, message, args) => {
 
         } else if (toEdit === "weapon" || toEdit === "weapons") {
             if (!typeOf) return message.channel.send(client.msg["profile_invalid_weapon"]);
-            typeOf = typeOf.toLowerCase().replace("gun", "pistol").replace("knife", "dagger").replace("blade", "sword").replcae("flamethrower", "fire").replace("fire", "flame");
+            typeOf = typeOf.toLowerCase().replace("gun", "pistol").replace("knife", "dagger").replace("blade", "sword").replace("flamethrower", "fire").replace("fire", "flame");
             if (typeOf === "scythe" || typeOf === "pistol" || typeOf === "dagger" || typeOf === "sword" || typeOf === "flame" || typeOf === "none") {
                 client.profile.set(target, `weapon_${typeOf}`, "weapon")
             } else return message.channel.send(client.msg["profile_weapon_invalid"])

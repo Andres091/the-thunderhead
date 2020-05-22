@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cd ..
 echo Starting Up...
 pm2 delete all
