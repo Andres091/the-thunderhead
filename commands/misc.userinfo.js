@@ -37,7 +37,7 @@ module.exports.run = async (client, message, args) => {
   let guildJoinDate = client.msg["userinfo_not_in_guild"];
   
   const userJoinDate = `${user.createdAt.getDate()+1}-${user.createdAt.getMonth()+1}-${user.createdAt.getFullYear()} @ ${user.createdAt.getHours()}:${user.createdAt.getMinutes()}:${user.createdAt.getSeconds()}`;
-	if (message.guild.member(user)) (guildJoinDate = timeConverter(message.member(user).joinedTimestamp)) && (guildNickname = message.guild.member(user).nickname || user.username);
+	if (message.guild.member(user)) (guildJoinDate = timeConverter(message.guild.member(user).joinedTimestamp)) && (guildNickname = message.guild.member(user).nickname || user.username);
 	
 	
   let game = user.presence.activities;
