@@ -66,7 +66,7 @@ module.exports.run = async (client, message, args) => {
     }
 
     profile = new Discord.MessageAttachment(canvas.toBuffer(), 'scythe-avatar.png');
-    thumbnail = profile.url;
+    thumbnail = "attachment://scythe-avatar.png";
   } catch (err) {
     thumbnail = "";
   }
@@ -103,6 +103,7 @@ module.exports.run = async (client, message, args) => {
   let userinfoEmbed = new Discord.MessageEmbed()
     .setAuthor(`${user.username}`, user.avatarURL({dynamic:true}))
     .setTitle("User Info")
+    
     	.addFields(
         { name: "Joined Discord", value: userJoinDate, inline: true },
         { name: "Joined Server", value: guildJoinDate, inline: true },
@@ -121,7 +122,7 @@ module.exports.run = async (client, message, args) => {
     .setFooter("Thunderhead Backbrain", client.user.avatarURL())
     .setColor(client.colors["discord"]);
   
-  message.channel.send(userinfoEmbed);
+  message.channel.send({ files: [profile], embed: userinfoEmbed);
 }
 
 module.exports.config = {
