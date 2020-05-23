@@ -33,11 +33,16 @@ module.exports.run = async (client, message, args) => {
             const robe = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["robe"]}.png?v=latest`);
             const gem = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["gem"]}.png?v=latest`);
             const weapon = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F${client.profile.get(target)["weapon"]}.png?v=latest`);
+            let HOUSE = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2Fundefined.png?v=latest`);
+            if (client.users.cache.get(target).flags.toArray().includes("HOUSE_BRILLIANCE")) HOUSE = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2FHOUSE_BRILLIANCE.png?v=latest`); //also doubles as a hypesquad tierlist :)))
+            if (client.users.cache.get(target).flags.toArray().includes("HOUSE_BALANCE")) HOUSE = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2FHOUSE_BALANCE.png?v=latest`);
+            if (client.users.cache.get(target).flags.toArray().includes("HOUSE_BRAVERY")) HOUSE = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2FHOUSE_BRAVERY.png?v=latest`);
             ctx.drawImage(skin, 0, 0, canvas.width, canvas.height);
             ctx.drawImage(face, 0, 0, canvas.width, canvas.height);
             ctx.drawImage(robe, 0, 0, canvas.width, canvas.height);
             ctx.drawImage(gem, 0, 0, canvas.width, canvas.height);
             ctx.drawImage(weapon, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(HOUSE, 0, 0, canvas.width, canvas.height);
         } else {
             const bot = await Canvas.loadImage(`https://cdn.glitch.com/8d7ee13d-7445-4225-9d61-e264d678640b%2F512${target}.png?v=latest`);
             ctx.drawImage(bot, 0, 0, canvas.width, canvas.height);
