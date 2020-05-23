@@ -47,6 +47,7 @@ client.itemTypeKey = cosmetic["itemTypeKey"];
 client.id = auth["client_id"];
 client.website = cosmetic["website"];
 client.items = new Enmap({name: "items"});
+client.scheduled_items = new Enmap({name: "scheduled_items"})
 client.shares = new Enmap({name: "shares"});
 client.profile = new Enmap({name: "profile"});
 client.prefs = new Enmap({name: "prefs"});
@@ -176,5 +177,11 @@ client.on('message', async message => {
 	let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)));
 	if(commandfile) commandfile.run(client, message, args);
 });
+
+setInterval(() => {
+	let items = client.scheduled_items.get("items");
+	let randId = Object.keys(items)[Math.floor(Math.random() * Object.keys(items).length)]
+	client.items.set("marketplace", randId, items[randID]);
+}, 1.2e+6)
 
 client.login(auth.token);
