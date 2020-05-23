@@ -5,8 +5,10 @@
 
 The Thunderhead is a bot based on the popular book series Arc of a Scythe by Neal Shusterman (which you should totally read) that takes place in the future in a “utopian” society featuring immortality for everyone... until you get gleaned by a scythe. The series includes an AI they call “The Thunderhead.” The Thunderhead is basically “The Cloud,” but it knows everything and observes _almost_ everything. This bot is r/scythebookfans and r/scytheposts recreation of that: a multilanguage multiuse Discord self-operating program featuring an economy with a market and real-time stocks, music, math solving power, Arc of a Scythe themed question asking and answering, and more!
 
-## Current Ver. ☁️🗡️ 3.0.6 | Weapons
-- made some tweaks to /profile
+## Current Ver. ☁️🗡️ 3.0.7 | Weapons
+- fixed music!
+- fixed datetime issues with userinfo
+
 
 ### Todo:
 

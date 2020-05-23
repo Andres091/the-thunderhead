@@ -14,7 +14,7 @@ function timeConverter(unixTimestamp){
   if (hour > 12) ((afternoon = "PM") && (hour-=12))
   var minute = timestampDateObject.getMinutes();
   var second = timestampDateObject.getSeconds();
-  var time = `${date} ${month} ${year} ${hour}:${minute}:${second} ${afternoon || "AM"}`;
+  var time = `${month} ${date} ${year} ${hour}:${minute}:${second} ${afternoon || "AM"}`; //uses american datetime because B)))))
   return time;
 }
 

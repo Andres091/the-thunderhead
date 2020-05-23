@@ -135,7 +135,7 @@ fs.readdir("./commands/", (err, files) => {
 	jsfile.forEach((f, i) => {
 		//it will log all the file names with extension .js
 		let pull = require(`./commands/${f}`);
-		console.log(`	- Loading ${f} \x1b[36m [Pending] \x1b[0m`); // Should be in colour
+		console.log(`	- Searching ${f} \x1b[36m [Pending] \x1b[0m`); // Should be in colour
 		if(pull.config) {
 			client.commands.set(pull.config.name, pull);
 			pull.config.aliases.forEach(alias => {
@@ -146,7 +146,7 @@ fs.readdir("./commands/", (err, files) => {
       		console.log(`	- Does ${f} have no command? \x1b[31m[Rejected]\x1b[0m\n`)
     	}
 	});
-	console.log("\n\n\x1b[1mAll commands loaded!\x1b[22m\n\n")
+	console.log("\n\n\x1b[1mCommands Loaded\x1b[22m\n\n")
 });
 
 client.on('message', async message => {

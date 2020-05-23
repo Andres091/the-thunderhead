@@ -30,8 +30,6 @@ module.exports.config = {
 };
 
 
-
-
 //Async - Music
 async function queueSong(video, message, voiceChannel, queue, client) {
 
@@ -82,7 +80,7 @@ async function playSong(guild, queue, song, message, client) {
     serverQueue.connection.play(ytdl(song.id))
         .on("end", reason => {
             serverQueue.songs.shift();
-            playSong(guild, queue, serverQueue.songs[0], message)
+            playSong(guild, queue, serverQueue.songs[0], message, client)
         })
         .on("error", console.error)
         .setVolumeLogarithmic(serverQueue.volume / 250)
