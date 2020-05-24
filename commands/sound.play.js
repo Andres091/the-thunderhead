@@ -57,7 +57,7 @@ module.exports.run = async (client, message, args) => {
             }
         }
         await message.channel.send(client.msg["music_video_success"].replace("[VIDEO_TITLE]", `${video.title}`))
-        return await queueSong(video, message, voiceChannel, client.queue)
+        return await queueSong(video, message, voiceChannel, client.queue, client)
     }
   
 } 
