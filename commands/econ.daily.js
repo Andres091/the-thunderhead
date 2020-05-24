@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
         if (output.updated) {
             var dailyProfile = await eco.AddToBalance(message.author.id, dailyAmount);
             message.channel.send((client.msg["daily_success"].replace("[DAILYAMOUNT]", dailyAmount).replace("[CUR]", client.emotes["currency_vibes"])).replace("[NEWBALANCE]", dailyProfile.newbalance).replace("[CUR]", client.emotes["currency_vibes"]));
-            const channel = client.channels.cache.get(config["eco_log_id"]);
+            const channel = client.channels.cache.get(config["econ_log_id"]);
             if (message.guild.id != "625021277295345667") channel.send(`${message.author.username} (${message.author.id}) did their daily and got ${dailyAmount} leaving them with ${dailyProfile.newbalance} ${client.emotes["currency_vibes"]}`);
         } else message.channel.send(client.msg["daily_failure"].replace("[TIMETOWAIT]", output.timetowait));
 
