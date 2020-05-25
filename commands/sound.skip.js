@@ -15,7 +15,8 @@ module.exports.run = async (client, message, args) => {
     if (!serverQueue) return message.channel.send(client.msg["music_queue_undefined"])
     serverQueue.playing = false
     await message.channel.send(client.msg["music_skip_success"])
-    return serverQueue.connection.dispatcher.destroy();
+    serverQueue.connection.dispatcher.end();
+    
 }
 
 
