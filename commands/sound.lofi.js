@@ -81,7 +81,7 @@ async function playSong(guild, song, message, client) {
         return;
     }
     serverQueue.connection.play(ytdl(song.id))
-        .on("finish", reason => {
+        .once('finish', reason => {
             serverQueue.songs.shift();
             playSong(guild, serverQueue.songs[0], message, client)
         })
