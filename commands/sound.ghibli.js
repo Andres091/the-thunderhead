@@ -16,7 +16,7 @@ module.exports.run = async (client, message, args) => {
   var url = "https://www.youtube.com/watch?v=EmRi0Z7tdTY"
   var video = await ytdl.getBasicInfo(url)
   await message.channel.send(client.msg["music_video_success"].replace("[VIDEO_TITLE]", `${video.title}`))
-  return await queueSong(video, message, message.member.voice.channel, client.queue, client)
+  return await queueSong(video, message, message.member.voice.channel, client)
 }
 
 
@@ -33,12 +33,13 @@ module.exports.config = {
 
 
 
+
 //Async - Music
-async function queueSong(video, message, voiceChannel, queue, client) {
+async function queueSong(video, message, voiceChannel, client) {
 
 
 
-    const serverQueue = queue.get(message.guild.id)
+    const serverQueue = client.queue.get(message.guild.id)
     let thumbnail = ""
     if (video.player_response) thumbnail = (video.player_response.videoDetails.thumbnail.thumbnails).slice(-1)[0]["url"];
     if (video.thumbnail) thumbnail = video.thumbnail;
@@ -60,8 +61,8 @@ async function queueSong(video, message, voiceChannel, queue, client) {
         try {
             const connection = await voiceChannel.join();
             queueConstruct.connection = connection;
-            queue.set(message.guild.id, queueConstruct)
-            playSong(message.guild, queue, queueConstruct.songs[0], message, client)
+            client.queue.set(message.guild.id, queueConstruct)
+            playSong(message.guild, queueConstruct.songs[0], message, client)
         } catch (e) {
             console.log(e)
             message.channel.send(client.msg["music_rejected"])
@@ -70,20 +71,20 @@ async function queueSong(video, message, voiceChannel, queue, client) {
     } else serverQueue.songs.push(song);
     return;
 }
-async function playSong(guild, queue, song, message, client) {
+async function playSong(guild, song, message, client) {
 
 
 
-    const serverQueue = queue.get(guild.id);
+    const serverQueue = client.queue.get(guild.id);
     if (!song) {
         serverQueue.voiceChannel.leave();
-        queue.delete(guild.id);
+        client.queue.delete(guild.id);
         return;
     }
     serverQueue.connection.play(ytdl(song.id))
         .on("end", reason => {
             serverQueue.songs.shift();
-            playSong(guild, queue, serverQueue.songs[0], message, client)
+            playSong(guild, serverQueue.songs[0], message, client)
         })
         .on("error", console.error)
         .setVolumeLogarithmic(serverQueue.volume / 250)
