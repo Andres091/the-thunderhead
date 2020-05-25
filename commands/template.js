@@ -12,7 +12,7 @@ module.exports.run = async (client, message, args  ) => {
 module.exports.config = {
   name: "template",
   aliases: [],
-  use: "test",
+  use: "template",
   description: "Temporary command to test if the bot is up!",
   state : "gamma",
   page: -1

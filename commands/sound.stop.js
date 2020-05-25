@@ -12,9 +12,9 @@ module.exports.run = async (client, message, args) => {
   if (!message.member.roles.cache.find(role => config["dj_role"] === role.name)) return message.channel.send(client.msg["rejcted_dj"].replace("[ROLE_DJ]", config["dj_role"]));
   if (!message.member.voice.channel) return message.channel.send(client.msg["music_channel_undefined"])
   const serverQueue = client.queue.get(message.guild.id);
-  if (!serverQueue) return message.channel.send(client.msg["music_queue_undefined"]);
+  if (!serverQueue || !serverQueue.songs) return message.channel.send(client.msg["music_queue_undefined"]);
   serverQueue.songs = [];
-  serverQueue.connection.dispatcher.destroy('Skip command has been used!');
+  serverQueue.connection.dispatcher.end();
   return message.channel.send(client.msg["music_stop_success"]);
   
 } 
