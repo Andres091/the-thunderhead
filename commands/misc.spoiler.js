@@ -30,7 +30,7 @@ module.exports.run = async (client, message, args) => {
   //📚 Spoilers!
   let spoilerEmbed = new Discord.MessageEmbed()
   .setTitle(`Spoilers ${spoilerKey[book].name} 📚${spoilerKey[book].emoji}`)
-  .setDescription(`||${sayMessage}||`)
+  .setDescription(`||${sayMessage || "What are you trying to spoil in the books?"}||`)
   .setFooter(message.author.username, message.author.avatarURL())
   .setColor(client.colors["discord"]);
 
