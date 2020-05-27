@@ -7,17 +7,30 @@ module.exports.run = async (client, message, args) => {
   
   for (var tagCheck in args) args[tagCheck] = args[tagCheck].replace(/||/g, '');
 
-  if (args[0] === "the") args = args.shift();
+  if (args[0] === "the") args.shift();
   let book = args[0].toLowerCase().replace("scythe", "0").replace("thunderhead", "1").replace("toll", "2");
   try {
-    let book = parseInt(book);
+    book = parseInt(book);
+    if (isNaN(book)) book = 3;
   } catch (err) {
     book = 3;
   }
-
-  const sayMessage = args.shift().join(" ");
+  
+  args.shift();
+  const sayMessage = args.join(" ");
   message.delete().catch(O_o => { }); // O_o - he vibes
-  message.channel.send(book + " " +sayMessage)
+  
+  let spoilerKey = {
+    0: {"emoji":client.emotes["utility_scythe"],"name":"for Scythe"},
+    1: {"emoji":client.emotes["utility_thunderhead"],"name":"for Thunderhead"},
+    2: {"emoji":client.emotes["utility_toll"],"name":"for The Toll"},
+    3: {"emoji":"📑","name":""}
+  }
+  
+  //📚 Spoilers!
+  let spoilerEmbed = new Discord.MessageEmbed()
+  .setTitle(`Spoilers ${spoilerKey[book].name} 📚${spoilerKey[book].emoji}`)
+  message.channel.send(`||${sayMessage}||`)
   
 } 
 
