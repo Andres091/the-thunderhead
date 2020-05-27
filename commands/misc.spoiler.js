@@ -30,7 +30,10 @@ module.exports.run = async (client, message, args) => {
   //📚 Spoilers!
   let spoilerEmbed = new Discord.MessageEmbed()
   .setTitle(`Spoilers ${spoilerKey[book].name} 📚${spoilerKey[book].emoji}`)
-  message.channel.send(`||${sayMessage}||`)
+  .setDescription(`||${sayMessage}||`)
+  .setFooter(message.author.username, message.author.avatarURL())
+
+  message.channel.send(spoilerEmbed);
   
 } 
 
