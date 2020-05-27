@@ -22,10 +22,10 @@ module.exports.run = async (client, message, args) => {
 } 
 
 module.exports.config = {
-  name: "spoiler",
-  aliases: [],
-  use: "spoiler [Book] Spoiler",
+  name: "spoilers",
+  aliases: ["spoiler", "spoil"],
+  use: "spoilers [Book] Spoiler",
   description: "Mark a spoiler",
-  state : "gamma",
+  state : "beta",
   page: 1
 };
