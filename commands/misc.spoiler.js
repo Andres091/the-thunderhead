@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const fs = require("graceful-fs");
 
 module.exports.run = async (client, message, args) => {
-  if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send(client.msg["rejected_client_permission_MANAGE_MESSAGES"]);
+  if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) return message.channel.send(client.msg["rejected_client_permission_MANAGE_MESSAGES"]);
   if (!args[1]) return;
   
   for (var tagCheck in args) args[tagCheck] = args[tagCheck].replace(/\|/g, '');
