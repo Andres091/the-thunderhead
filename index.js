@@ -17,6 +17,7 @@ const alingualMsgs = require("./static/msgs.json"); // For messages that are in 
 const Discord = require("discord.js");
 const fs = require("graceful-fs");
 const Enmap = require('enmap');
+const DBL = require("dblapi.js");
 
 //Import Dynamic Files (todo replace with sqlite)
 try {
@@ -52,7 +53,7 @@ client.profile = new Enmap({name: "profile"});
 client.prefs = new Enmap({name: "prefs"});
 client.vault = {}; // I am lazy as fuck
 client.suspend = false;
-
+const dbl = new DBL(auth.dbl, client);
 
 
 /********************************           
