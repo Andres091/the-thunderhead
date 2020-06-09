@@ -1,13 +1,23 @@
 const Discord = require("discord.js");
 const fs = require("graceful-fs");
 var eco = require('discord-economy');
+const authFile = require("./auth.json");
+const auth = authFile.stable;  // change this to canary later maybe
 const config = require("../static/config.json"); 
 const altlist = require("../dynamic/altlist.json");
+const DBL = require("dblapi.js");
 const workedRecently = new Set(); 
 
 module.exports.run = async (client, message, args) => {
-  //Voting removed for the the time being
+  const dbl = new DBL(auth.dbl, client);
+
   let hasVoted = false;
+  try {
+      hasVoted = await dbl.hasVoted(message.author.id);
+  } catch (err) {
+      hasVoted = false;
+
+  }
 
   
   let failurerate = 40 + (hasVoted * 20);

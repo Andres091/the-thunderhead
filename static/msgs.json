@@ -113,7 +113,7 @@
 
     "work_success": "You worked and earned [EARNED] [CURRENCY] leaving you with [BALANCE] [CURRENCY]",
     "work_rejected": "I’m pleased with your work ethic and determination, but don’t overwork yourself. Try again after a 5 minute break",
-    "work_failure": "You didn't earn money, today isn't your day. ~~You can always `[PREFIX]vote` for a higher chance.~~ Voting is currently disabled due to a bug.",
+    "work_failure": "You didn't earn money, today isn't your day. You can always `[PREFIX]vote` for a higher chance.",
 
     "sell_rejected": "You do not have that item in your possession to sell it.",
     "sell_success": "You have sold that item. You will get reimbursed when someone buys it from the market.",
@@ -306,8 +306,8 @@
 
     "work_success": "You worked and earned [EARNED] [CURRENCY] leaving you with [BALANCE] [CURRENCY]",
     "work_rejected": "I’m pleased with your work ethic and determination, but don’t overwork yourself. Try again after a 5 minute break",
-    "work_failure": "You didn't earn money, today isn't your day. ~~You can always `[PREFIX]vote` for a higher chance.~~ Voting is currently disabled due to a bug.",
-
+    "work_failure": "You didn't earn money, today isn't your day. You can always `[PREFIX]vote` for a higher chance.",
+    
     "sell_rejected": "You do not have that item in your possession to sell it.",
     "sell_success": "You have sold that item. You will get reimbursed when someone buys it from the market.",
 
@@ -499,8 +499,8 @@
 
     "work_success": "You worked and earned [EARNED] [CURRENCY] leaving you with [BALANCE] [CURRENCY]",
     "work_rejected": "I’m pleased with your work ethic and determination, but don’t overwork yourself. Try again after a 5 minute break",
-    "work_failure": "You didn't earn money, today isn't your day. ~~You can always `[PREFIX]vote` for a higher chance.~~ Voting is currently disabled due to a bug.",
-
+    "work_failure": "You didn't earn money, today isn't your day. You can always `[PREFIX]vote` for a higher chance.",
+   
     "sell_rejected": "You do not have that item in your possession to sell it.",
     "sell_success": "You have sold that item. You will get reimbursed when someone buys it from the market.",
 
@@ -693,7 +693,7 @@
 
     "work_success": "You worked and earned [EARNED] [CURRENCY] leaving you with [BALANCE] [CURRENCY]",
     "work_rejected": "I’m pleased with your work ethic and determination, but don’t overwork yourself. Try again after a 5 minute break",
-    "work_failure": "You didn't earn money, today isn't your day. ~~You can always `[PREFIX]vote` for a higher chance.~~ Voting is currently disabled due to a bug.",
+    "work_failure": "You didn't earn money, today isn't your day. You can always `[PREFIX]vote` for a higher chance.",
 
     "sell_rejected": "You do not have that item in your possession to sell it.",
     "sell_success": "You have sold that item. You will get reimbursed when someone buys it from the market.",
