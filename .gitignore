@@ -1,6 +1,13 @@
 vs
+venv
 node_modules
 package-lock.json
-.vs/ProjectSettings.json
+auth.json
 .vs/slnx.sqlite
+.vs/ProjectSettings.json
+auth.json
+*.sqlite
+data/enmap.sqlite-shm
+data/enmap.sqlite-wal
+data/enmap.sqlite
 auth.json

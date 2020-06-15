@@ -16,19 +16,21 @@
     "canvas": "^2.6.1",
     "cat-ascii-faces": "^2.0.0",
     "cat-facts": "^1.0.2",
+    "dblapi.js": "^2.4.0",
     "discord-economy": "^1.2.2",
     "discord.js": "discordjs/discord.js",
     "enmap": "^5.2.4",
     "graceful-fs": "^4.2.4",
     "math-expression-evaluator": "^1.2.22",
     "ms": "^2.1.2",
+    "nerdamer": "^1.1.4",
+    "python-shell": "^2.0.1",
     "sqlite3": "^4.2.0",
     "weather-js": "^2.0.0",
     "yt-search": "^1.1.2",
     "ytdl-core": "^2.1.2",
     "ytpl": "^0.1.21",
-    "nerdamer":"^1.1.4",
-    "dblapi.js": "^2.4.0"
+    "child-process": "1.0.2"
   },
   "repository": {
     "url": "https://github.com/humboldt123/the-thunderhead"
