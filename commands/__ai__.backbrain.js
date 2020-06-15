@@ -7,11 +7,12 @@ const spawn = require("child_process").spawn;
 module.exports.run = async (client, message, args  ) => {
   if (message.guild.id !== "625021277295345667") return;
   const pythonProcess = spawn('python3', [__dirname + "/__ai__/generate.py"]); // python3; the thunderhead is hosted on a linux thingy!!!
+  message.channel.send("Generating Text... Please be patient. DM-ing you the details")
   pythonProcess.stderr.on('data', (data) => {
-    message.channel.send(data.toString());
+    message.author.send(data.toString());
 });
   pythonProcess.stdout.on('data', (data) => {
-    message.channel.send(data.toString())
+    message.reply(data.toString())
 });
   
 } 
