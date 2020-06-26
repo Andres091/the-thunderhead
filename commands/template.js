@@ -1,8 +1,6 @@
 const Discord = require("discord.js");
 const fs = require("graceful-fs");
 
-// This is a command template. I hope its self documenting so you don't have to sift through my god-awful code! ^.^
-
 module.exports.run = async (client, message, args  ) => {
   
   message.channel.send(`Bot is up! ${client.emotes["emoji_bonk"]}`);
