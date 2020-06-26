@@ -1,0 +1,1 @@
+As the bot transitions to using an actual database, I want to get rid of everything in this folder. However, moving an altlist or reminders is far more effort than it is worth and as such, will not be done by me in the foreseeable future.
