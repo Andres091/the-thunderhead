@@ -57,24 +57,6 @@ client.vault = {}; // I am lazy as fuck
 client.suspend = false;
 const dbl = new DBL(auth.dbl, client);
 
-
-/********************************           
-              ___ 
-             /  .\ 
-             \  ; | 
-              `--"  
-
-                                      note: if you can do the bot's artwork better, be my guest. 
-              ___   
-             /  .\  
-             \_ ; | 
-             /  ,"  
-            '--'    
-
-		  Never Forget.
-		  semi  colon
-********************************/
-
 client.on("ready", () => {
 	const activities_list = [`to you look at my backbrain`, `the demands of humanity`, `humanity with an unblinking eye`, `the Scythedom, unable to comment`, `you asking ${config.prefix}help`, `millions of conversations at once`, `music || Listen Along!`];
 	const activities_type = ["WATCHING", "LISTENING", "WATCHING", "WATCHING", "LISTENING", "LISTENING", "STREAMING"];
