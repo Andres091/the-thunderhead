@@ -4,7 +4,6 @@ var eco = require('discord-economy');
 var eco = require('discord-economy');
 
 module.exports.run = async (client, message, args  ) => {
-  
     if (!client.vault[message.author.id]) return message.channel.send(client.msg["reap_undefined"]);
     if (client.vault[message.author.id].amount == 0) return message.channel.send(client.msg["reap_failure"]);
     var cost = client.vault[message.author.id].amount;
