@@ -5,7 +5,7 @@ const config = require("../static/config.json");
 var eco = require('discord-economy');
 
 module.exports.run = async (client, message, args) => {
-  let requiredPermission = "USE_EXTERNAL_EMOJIS"; 
+  let requiredPermission = "USE_EXTERNAL_EMOJIS";  //Use of new perms system
   if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
   if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
 
