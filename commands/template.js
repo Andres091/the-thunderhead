@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 const fs = require("graceful-fs");
 
-module.exports.run = async (client, message, args  ) => {
+module.exports.run = async (client, message, args) => {
   
   message.channel.send(`Bot is up! ${client.emotes["emoji_bonk"]}`);
   
