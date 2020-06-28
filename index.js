@@ -31,9 +31,6 @@ try {
 
 const reminds = require("./dynamic/reminds.json");
 
-//genius fucking error handlin', dont @ me
-
-
 // Add altist
 
 
@@ -53,7 +50,7 @@ client.items = new Enmap({name: "items"});
 client.shares = new Enmap({name: "shares"});
 client.profile = new Enmap({name: "profile"});
 client.prefs = new Enmap({name: "prefs"});
-client.vault = {}; // I am lazy as fuck
+client.vault = {}; 
 client.suspend = false;
 const dbl = new DBL(auth.dbl, client);
 
@@ -88,8 +85,6 @@ client.on("ready", () => {
 		reminds = {};
 	}
 	//todo: switch to an ACTUAL DATABASE (i think)
-    // note: if you can do that or are in possession of two or more brain cells, submit a pr or hmu
-    // note: also we need to make a python script or some shit to conver json to said actual database
 		
 		
 		var date = new Date();
