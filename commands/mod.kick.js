@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
   let requiredPermission = "KICK_MEMBERS"; 
   if (!message.member.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_user_permission_"+requiredPermission]);
   if (!message.guild.me.hasPermission(requiredPermission)) return message.channel.send(client.msg["rejected_client_permission_"+requiredPermission]);
-     
+     //Uses new perm system
     let member = message.mentions.members.first() || message.guild.members.get(args[0]);
     if (!member) return message.channel.send(client.msg["kick_invalid"]);
     if (!member.kickable) return message.channel.send(client.msg["kick_rejected"]);
