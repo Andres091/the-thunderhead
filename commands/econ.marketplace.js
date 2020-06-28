@@ -66,7 +66,7 @@ module.exports.run = async (client, message, args) => {
         var b = "◀";
         var f = "▶";
         var page = args[0] - 1;
-        if (!embeds[page - 1]) page = 0; // -1 because computers start at 0 :eye_roll_emoji_keanu_chungus_wholsome:
+        if (!embeds[page - 1]) page = 0; // This is at -1 because computers start counting at zero.
         var embed = embeds[page];
         const m = await message.channel.send({embed});
         m.react(b).then(() => m.react(f));
