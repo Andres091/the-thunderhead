@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const fs = require("graceful-fs");
 const reminds = require("../dynamic/reminds.json");
 
-module.exports.run = async (client, message, args  ) => {
+module.exports.run = async (client, message, args) => {
 
     try {
       let testValue = reminds;
