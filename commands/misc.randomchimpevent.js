@@ -12,7 +12,8 @@ module.exports.run = async (client, message, args  ) => {
     "https://tenor.com/view/monkey-haircut-gif-9838558",
     "https://tenor.com/view/curious-what-monkey-chimp-walking-gif-10714369",
     "https://tenor.com/view/funny-gif-10879973",
-    "https://media.discordapp.net/attachments/696038770558107679/700191886681309214/ShallowUnhealthyDeermouse-size_restricted.gif"
+    "https://media.discordapp.net/attachments/696038770558107679/700191886681309214/ShallowUnhealthyDeermouse-size_restricted.gif",
+    "https://tenor.com/view/monkey-with-money-happy-withmoney-swag-dollars-more-money-gif-14116367"
   ]; 
   
   message.channel.send(randomChimpEvents[Math.floor(Math.random() * randomChimpEvents.length)]);
