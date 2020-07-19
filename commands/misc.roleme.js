@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
     var role = args[0];
     if (!role) return message.channel.send(client.msg["roleme_undefined"]);
     var _r = role.toLowerCase().charAt(0).toUpperCase() + role.toLowerCase().slice(1);
-    if (_r === "Artist" || _r === "Writer" || _r === "Scythe" || _r === "Spoiled" || _r === "Tonist" || _r === "Minecraft" || r_ === "Poll-imentarian") {
+    if (_r === "Artist" || _r === "Writer" || _r === "Scythe" || _r === "Spoiled" || _r === "Tonist" || _r === "Minecraft" || _r === "Poll-imentarian") {
         var rl = message.guild.roles.cache.find(role => role.name === _r);
         if (message.member.roles.cache.find(r => r.name === _r)) {
             message.member.roles.remove(rl);
