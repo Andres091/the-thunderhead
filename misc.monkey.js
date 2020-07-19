@@ -12,7 +12,7 @@ module.exports.config = {
   name: "monkey",
   aliases: [],
   use: "monkey",
-  description: "Temporary command to test if the bot is up!",
+  description: "moneky monkey!!!!",
   state : "gamma",
   page: -1
 };
