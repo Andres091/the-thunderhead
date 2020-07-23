@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
     let expVal;
     let maybeViolate = message.content;
     try {
-        expVal = (mexp.eval(args.join(" ").replace(/sqrt/g, 'root').replace(/[÷]/g, "/").replace(/[xX]/g, "*").replace(/[`]/g, ""))).toString();
+        expVal = (mexp.eval(args.join(" ").replace("@", "\\@").replace(/sqrt/g, 'root').replace(/[÷]/g, "/").replace(/[xX]/g, "*").replace(/[`]/g, ""))).toString();
     } catch (err) {
       console.log(err);
     }
