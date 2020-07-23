@@ -32,7 +32,7 @@ module.exports.run = async (client, message, args) => {
         });
     } else {
         var scytheRandom = Math.floor(Math.random() * cosmetic.ask_answers.length);
-        message.channel.send(`You asked: *${args.join(" ").replace("@", "\\@")}*`, {
+        message.channel.send(`You asked: *${args.join(" ").replace("@", "")}*`, {
             files: [cosmetic.ask_answers[scytheRandom]]
         });
     }
