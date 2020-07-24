@@ -21,7 +21,7 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.config = {
   name: `${config["developer_prepended_prefix"]}terminal`,
-  aliases: ["eval"],
+  aliases: [],
   use: `${config["developer_prepended_prefix"]}terminal [Command]`,
   description: "Execute code",
   state: "delta",
