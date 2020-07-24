@@ -22,9 +22,9 @@ module.exports.run = async (client, message, args) => {
 };
 
 module.exports.config = {
-  name: `${config["developer_prepended_prefix"]}terminal`,
+  name: `${config["developer_prepended_prefix"]}minecraftserver`,
   aliases: ["mcs"],
-  use: `${config["developer_prepended_prefix"]}terminal [Command]`,
+  use: `${config["developer_prepended_prefix"]}minecraftserver [Reset/No]`,
   description: "Start the minecraft server",
   state: "delta",
   page: 0
