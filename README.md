@@ -27,3 +27,5 @@ The Thunderhead is a bot based on the popular book series Arc of a Scythe by Nea
 
 - if you plan on contributing [here](https://trello.com/b/wtAYO1cr/thunderhead) is a master list of what we need done;
 - if you have a feature suggestion, please submit a [feature request](https://github.com/humboldt123/the-thunderhead/issues/new?assignees=humboldt123&labels=enhancement&template=feature_request.md&title=%5BFEATURE+REQUEST%5D) in issues.
+
+Thanks to [Vendspeak](https://www.youtube.com/channel/UC7BmOtrQdZP5e5hWoso7C4g) for the bot's icon!
