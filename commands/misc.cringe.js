@@ -35,7 +35,7 @@ module.exports.run = async (client, message, args) => {
 
             if (looper == messages.length - 1) {
                 var attachment = new Discord.MessageAttachment(canvas.toBuffer(), 'cringe.png');
-                message.channel.send(`📸 <#694565072743170078>`, attachment);
+                message.channel.send(`📸 Cringe Comp!`, attachment);
 
             }
 
