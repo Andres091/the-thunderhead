@@ -20,9 +20,9 @@ module.exports.run = async (client, message, args) => {
 };
 
 module.exports.config = {
-  name: `${config["developer_prepended_prefix"]}exe`,
+  name: `${config["developer_prepended_prefix"]}terminal`,
   aliases: ["eval"],
-  use: `${config["developer_prepended_prefix"]}exe [Javascript]`,
+  use: `${config["developer_prepended_prefix"]}terminal [Command]`,
   description: "Execute code",
   state: "delta",
   page: 0
