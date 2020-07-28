@@ -36,7 +36,7 @@ module.exports.run = async(client, message, args) => {
     });
 
     poll = args.slice(argPoint + 1).join(" ");
-
+    if (ms(args[argPoint]) == undefined) return;
 
     let pollEmbed = new Discord.MessageEmbed()
       .setColor(client.colors["discord"])
