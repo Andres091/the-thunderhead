@@ -3,7 +3,7 @@ const fs = require("graceful-fs");
 module.exports.run = async (client, message, args  ) => {
   
   const randomChimpEvents = [
-    "https://bigrat.monster/monkeys/CwQRLGK.mp4",
+    "https://bigrat.monster/monkeys/CwQRLGK.mp4?.gif",
     "https://bigrat.monster/monkeys/Monkey_Orange.gif",
     "https://bigrat.monster/monkeys/ShallowUnhealthyDeermouse-size_restricted.gif",
     "https://bigrat.monster/monkeys/chimp.gif",
@@ -23,7 +23,7 @@ module.exports.run = async (client, message, args  ) => {
 
 module.exports.config = {
   name: "randomchimpevent",
-  aliases: [],
+  aliases: ["funnymonkey"],
   use: "randomchimpevent",
   description: "Truly, a random chimp event.",
   state : "gamma",
