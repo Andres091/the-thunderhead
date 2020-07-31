@@ -3,18 +3,18 @@ const fs = require("graceful-fs");
 module.exports.run = async (client, message, args  ) => {
   
   const randomChimpEvents = [
-    "https://i.imgur.com/CwQRLGK.mp4",
-    "https://tenor.com/view/monkey-boat-driving-speed-gif-16514438",
-    "https://tenor.com/view/monkey-lick-yum-delicious-hot-gif-9727684",
-    "https://tenor.com/view/monkey-dabke-gif-3523468",
-    "https://tenor.com/view/monkey-gif-7222281",
-    "https://tenor.com/view/monkey-callme-gif-4577639",
-    "https://tenor.com/view/monkey-haircut-gif-9838558",
-    "https://tenor.com/view/curious-what-monkey-chimp-walking-gif-10714369",
-    "https://tenor.com/view/funny-gif-10879973",
-    "https://media.discordapp.net/attachments/696038770558107679/700191886681309214/ShallowUnhealthyDeermouse-size_restricted.gif",
-    "https://tenor.com/view/monkey-with-money-happy-withmoney-swag-dollars-more-money-gif-14116367",
-    "https://cdn.discordapp.com/attachments/537457343622021131/736039744206798928/Monkey_Orange.gif"
+    "https://bigrat.monster/monkeys/CwQRLGK.mp4",
+    "https://bigrat.monster/monkeys/Monkey_Orange.gif",
+    "https://bigrat.monster/monkeys/ShallowUnhealthyDeermouse-size_restricted.gif",
+    "https://bigrat.monster/monkeys/chimp.gif",
+    "https://bigrat.monster/monkeys/curiouswhat.gif",
+    "https://bigrat.monster/monkeys/monkeyboat.gif",
+    "https://bigrat.monster/monkeys/monkeydabke.gif",
+    "https://bigrat.monster/monkeys/monkeylick.gif",
+    "https://bigrat.monster/monkeys/monkeymoney.gif",
+    "https://bigrat.monster/monkeys/orangutan.gif",
+    "https://bigrat.monster/monkeys/piere.gif",
+    "https://bigrat.monster/monkeys/telephonemonkey.gif"
   ]; 
   
   message.channel.send(randomChimpEvents[Math.floor(Math.random() * randomChimpEvents.length)]);
