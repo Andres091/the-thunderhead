@@ -5,7 +5,13 @@ var cats = require("cat-ascii-faces");
 
 module.exports.run = async (client, message, args) => {
   
-  message.channel.send(cats() + "\n" + catFacts.random());
+      let catEmbed = new Discord.MessageEmbed()
+        .setColor(client.colors["discord"])
+        .setTitle(catFacts.random())
+        .setDescription(cats())
+        .setImage(`http://www.randomkittengenerator.com/cats/rotator.php`)
+
+    message.channel.send(catEmbed);
   
 } 
 
