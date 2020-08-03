@@ -2,7 +2,7 @@
 
 // Import AuthFile
 const authFile = require("./auth.json");
-const auth = authFile.canary; 
+const auth = authFile.stable; 
 
 if (auth === authFile.canary) {
 	console.log("\n\n\x1b[1mWARNING\x1b[22m\n\nYou are using canary!")
