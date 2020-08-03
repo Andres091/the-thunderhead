@@ -158,11 +158,9 @@ client.on('message', async message => {
 });
 
 client.on('messageUpdate', (oldMessage, newMessage) => {
-    if (newMessage.author.bot) return;
     autoResponder(newMessage);
 })
 client.on('message', async message => {
-    if (message.author.bot) return;
     autoResponder(message);
 })
 
