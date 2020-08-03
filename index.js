@@ -157,15 +157,23 @@ client.on('message', async message => {
 	if(commandfile) commandfile.run(client, message, args);
 });
 
+const slursRegex = new RegExp("(nigg.{1,2}|tran(?![spfqcg]).{1,2}|penis|ag.{1,2}t|cum|r.{1,2}tar.{1})");
+
+
 client.on('messageUpdate', (oldMessage, newMessage) => {
     autoResponder(newMessage);
 })
 client.on('message', async message => {
     autoResponder(message);
 })
-
+client.on('guildMemberUpdate', (oldMember, newMember) => {
+	if (newMember.guild.id === "625021277295345667") {
+		if (slursRegex.test(newMember.nickname)) {
+			newMember.setNickname("bigrat.monster", "Slurs are against Rule 1.")
+		}
+	}
+})
 function autoResponder(message) {
-	const slursRegex = new RegExp("(nigg.{1,2}|tran(?![spfqcg]).{1,2}|penis|ag.{1,2}t|cum|r.{1,2}tar.{1})");
 	if (message.guild.id === "625021277295345667") {
 		/* slurs regex */
 		let cleanedMessage = message.content.toLowerCase();
