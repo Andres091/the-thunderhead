@@ -2,7 +2,7 @@
 
 // Import AuthFile
 const authFile = require("./auth.json");
-const auth = authFile.stable; 
+const auth = authFile.canary; 
 
 if (auth === authFile.canary) {
 	console.log("\n\n\x1b[1mWARNING\x1b[22m\n\nYou are using canary!")
@@ -156,5 +156,26 @@ client.on('message', async message => {
 	let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)));
 	if(commandfile) commandfile.run(client, message, args);
 });
+
+client.on('messageUpdate', (oldMessage, newMessage) => {
+    if (newMessage.author.bot) return;
+    autoResponder(newMessage);
+})
+client.on('message', async message => {
+    if (message.author.bot) return;
+    autoResponder(message);
+})
+
+function autoResponder(message) {
+	const slursRegex = new RegExp("(nigg.{1,2}|tran(?![spfqcg]).{1,2}|penis|ag.{1,2}t|cum|r.{1,2}tar.{1})");
+	if (message.guild.id === "625021277295345667") {
+		/* slurs regex */
+		let cleanedMessage = message.content.toLowerCase();
+		if (slursRegex.test(cleanedMessage)) {
+			message.reply("Slurs are against Rule 1.");
+			return message.delete()
+		}
+	}
+}
 
 client.login(auth.token);
