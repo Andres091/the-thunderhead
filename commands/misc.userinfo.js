@@ -51,7 +51,9 @@ module.exports.run = async (client, message, args) => {
 	else if(user.presence.status === "idle") status = (`Idle ${client.emotes["utility_idle"]}`);
 	else if (user.presence.status === "dnd") status = (`Do Not Disturb ${client.emotes["utility_dnd"]}`);
 	else if (user.presence.status === "offline") status = (`Offline ${client.emotes["utility_offline"]}`);
-	else status = (`Offline ${client.emotes["utility_offline"]}`);
+	else { 
+            status = (`Offline ${client.emotes["utility_offline"]}`);
+    	}
   if (user.presence.activities[0] && user.presence.activities[0].type === "STREAMING") status = `Streaming ${client.emotes["utility_live"]}`; 
   
   let statusBlock = []; 
