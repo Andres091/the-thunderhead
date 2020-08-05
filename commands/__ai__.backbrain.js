@@ -23,5 +23,5 @@ module.exports.config = {
   use: "backbrain",
   description: "A highly expirimental command that involes neural networks to generate lines of text, the training data of which is the novel, Scythe.",
   state : "beta",
-  page: 1
+  page: -1
 };
