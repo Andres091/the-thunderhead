@@ -46,14 +46,11 @@ module.exports.run = async (client, message, args) => {
   } else devices += "Not Online";
   if (user.bot) devices = client.emotes["utility_bot"]; // BOT tag now displays regardless
 
-	let status;
+	let status = `Offline ${client.emotes["utility_offline"]}`;
 	if (user.presence.status === "online") status = (`Online ${client.emotes["utility_online"]}`);
 	else if(user.presence.status === "idle") status = (`Idle ${client.emotes["utility_idle"]}`);
 	else if (user.presence.status === "dnd") status = (`Do Not Disturb ${client.emotes["utility_dnd"]}`);
 	else if (user.presence.status === "offline") status = (`Offline ${client.emotes["utility_offline"]}`);
-	else { 
-            status = (`Offline ${client.emotes["utility_offline"]}`);
-    	}
   if (user.presence.activities[0] && user.presence.activities[0].type === "STREAMING") status = `Streaming ${client.emotes["utility_live"]}`; 
   
   let statusBlock = []; 
