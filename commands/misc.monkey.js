@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
 
     var local = ""
     local += Monkeys[Math.floor(Math.random() * Monkeys.length)]
-    var rand = getRandomInt(3)
+    var rand= Math.floor((Math.random() * 3) + 1);
     for (i = 0; i <= rand; i++) {
         local += Monkeys[Math.floor(Math.random() * Monkeys.length)]
     }
