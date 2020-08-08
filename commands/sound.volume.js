@@ -23,7 +23,7 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.config = {
   name: "volume",
-  aliases: ["vol", "v"],
+  aliases: ["vol", "v", "scalechungus"],
   use: "volume [Amount]",
   description: "Set the volume as a number from 0-100",
   state : "gamma",
