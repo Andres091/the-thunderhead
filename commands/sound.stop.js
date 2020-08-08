@@ -23,7 +23,7 @@ module.exports.run = async (client, message, args) => {
 
 module.exports.config = {
   name: "stop",
-  aliases: [],
+  aliases: ["smallchungus"],
   use: "stop",
   description: "Stop the music currently playing.",
   state : "gamma",
