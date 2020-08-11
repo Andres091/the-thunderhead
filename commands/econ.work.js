@@ -37,9 +37,7 @@ module.exports.run = async (client, message, args) => {
 
       if (output.earned == 0) return message.reply(client.msg["work_failure"].replace("[PREFIX]", config.prefix))
       message.channel.send(client.msg["work_success"].replace("[EARNED]", output.earned).replace("[BALANCE]", output.balance).replace("[CURRENCY]", client.emotes["currency_vibes"]).replace("[CURRENCY]", client.emotes["currency_vibes"]))
-      const channel = client.channels.cache.get(config["econ_log_id"]);
-      if (message.guild.id != "625021277295345667") channel.send(`${message.author.username} (${message.author.id}) worked and earned ${output.earned} ${client.emotes["currency_vibes"]}. They now own ${output.balance} ${client.emotes["currency_vibes"]}.`)
-  }
+    }
 }
 module.exports.config = {
   name: "work",
