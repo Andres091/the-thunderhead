@@ -167,14 +167,14 @@ client.on('message', async message => {
     autoResponder(message);
 })
 client.on('guildMemberUpdate', (oldMember, newMember) => {
-	if (newMember.guild.id === "625021277295345667") {
+	if (message.guild && message.guild.id === "625021277295345667") {
 		if (slursRegex.test(newMember.nickname)) {
 			newMember.setNickname("bigrat.monster", "Slurs are against Rule 1.")
 		}
 	}
 })
 function autoResponder(message) {
-	if (message.guild.id === "625021277295345667") {
+	if (message.guild && message.guild.id === "625021277295345667") {
 		/* slurs regex */
 		let cleanedMessage = message.content.toLowerCase();
 		if (slursRegex.test(cleanedMessage)) {
