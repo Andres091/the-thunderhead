@@ -167,7 +167,7 @@ client.on('message', async message => {
     autoResponder(message);
 })
 client.on('guildMemberUpdate', (oldMember, newMember) => {
-	if (message.guild && message.guild.id === "625021277295345667") {
+	if (newMember.guild && newMember.guild.id === "625021277295345667") {
 		if (slursRegex.test(newMember.nickname)) {
 			newMember.setNickname("bigrat.monster", "Slurs are against Rule 1.")
 		}
