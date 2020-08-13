@@ -157,7 +157,7 @@ client.on('message', async message => {
 	if(commandfile) commandfile.run(client, message, args);
 });
 
-const slursRegex = new RegExp("(nigg.{1,2}|tran(?![spfqcgze ]).{1,2}|fag.{1,2}t|retard)");
+const slursRegex = new RegExp("(nigg.{1,2}|tranny|trannie|fag.{1,2}t|retard)");
 
 
 client.on('messageUpdate', (oldMessage, newMessage) => {
