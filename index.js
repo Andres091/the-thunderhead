@@ -184,4 +184,37 @@ function autoResponder(message) {
 	}
 }
 
+
+/**
+ * @module starboard
+ * @author sourTaste000 (Originally for https://github.com/kami-blue/bot)
+ * @skidder humboldt123 (they let me: see https://github.com/humboldt123/the-thunderhead/blob/master/SUBLICENSING/starboard.md)
+ * 
+ * ( ͡° ͜ʖ ͡°) (lenny face)
+ */
+let pinnedMessages = [];
+let i = 0;
+
+client.on('messageReactionAdd', async (reaction, user) => {
+    if (!reaction.message.guild) return;
+    if (reaction.guild.id !== "625021277295345667") return;
+    if (reaction.emoji.toString() === "⭐" && !pinnedMessages.includes(reaction.message.content)) {
+        if (reaction.count === 3) {
+            pinnedMessages[i] = reaction.message.content;
+            const image = reaction.message.attachments.size > 0 ? reaction.message.attachments.array()[0].url : ''; //very pog lol
+            const starEmbed = new Discord.MessageEmbed()
+                .setAuthor("Thunderhead", "https://raw.githubusercontent.com/humboldt123/the-thunderhead/master/static/newicon.png", "https://thunderhead.skrub.dev")
+                .setDescription(reaction.message.content)
+                .addField("[link]", reaction.message.url, true)
+                .setFooter(reaction.message.author.username, reaction.message.author.avatarURL())
+                .setColor(client.colors.yellow)
+                .setTimestamp();
+            client.channels.cache.get('743605982386454669').send(starEmbed);
+            client.channels.cache.get('743605982386454669').send(image);
+            i++
+        }
+    }
+});
+
+
 client.login(auth.token);
