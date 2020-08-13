@@ -197,7 +197,7 @@ let i = 0;
 
 client.on('messageReactionAdd', async (reaction, user) => {
     if (!reaction.message.guild) return;
-    if (reaction.guild.id !== "625021277295345667") return;
+    if (reaction.message.guild.id !== "625021277295345667") return;
     if (reaction.emoji.toString() === "⭐" && !pinnedMessages.includes(reaction.message.content)) {
         if (reaction.count === 3) {
             pinnedMessages[i] = reaction.message.content;
