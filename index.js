@@ -205,9 +205,9 @@ client.on('messageReactionAdd', async (reaction, user) => {
             const starEmbed = new Discord.MessageEmbed()
                 .setAuthor("Thunderhead", "https://raw.githubusercontent.com/humboldt123/the-thunderhead/master/static/newicon.png", "https://thunderhead.skrub.dev")
                 .setDescription(reaction.message.content)
-                .addField("[link]", reaction.message.url, true)
+                .addField("Original Message Link:", reaction.message.url, true)
                 .setFooter(reaction.message.author.username, reaction.message.author.avatarURL())
-                .setColor(client.colors.yellow)
+                .setColor(client.colors.thunderhead)
                 .setTimestamp();
             client.channels.cache.get('743605982386454669').send(starEmbed);
             client.channels.cache.get('743605982386454669').send(image);
