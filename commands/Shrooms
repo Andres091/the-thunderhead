@@ -1,0 +1,17 @@
+const Discord = require("discord.js");
+const fs = require("graceful-fs");
+
+module.exports.run = async (client, message, args) => {
+  
+  message.channel.send("Nigg*r");
+  
+} 
+
+module.exports.config = {
+  name: "shrooms",
+  aliases: [],
+  use: "shrooms",
+  description: "Epic funny",
+  state : "gamma",
+  page: -1
+};
